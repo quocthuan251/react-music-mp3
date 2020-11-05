@@ -4,7 +4,9 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import UserPage from './pages/UserPage';
+import SongDetail from './pages/SongDetail';
 import HeaderLayout from './components/header/Header';
+import MiniPlayerControls from './common/tabMiniPlayMusic/MainContainer';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { Spin } from 'antd';
 import routes from './route';
@@ -52,7 +54,13 @@ function App() {
 			</Header>
 			<Content
 				className="site-layout"
-				style={{ padding: '0 50px', marginTop: 64 }}
+				style={{
+					padding: '0 50px',
+					marginTop: 64,
+					color: 'black',
+					backgroundColor: '#FCFCFC',
+					// position: 'relative',
+				}}
 			>
 				<div
 					className="site-layout-background"
@@ -61,7 +69,8 @@ function App() {
 					<Router>
 						<Switch>
 							<Route exact path="/" component={HomePage} />
-							<Route path="/:id" component={UserPage} />
+							{/* <Route path="/:id" component={UserPage} /> */}
+							<Route path="/songdetail" component={SongDetail} />
 						</Switch>
 					</Router>
 					{/* <Router>
@@ -69,8 +78,23 @@ function App() {
 					</Router> */}
 				</div>
 			</Content>
-			<Footer style={{ textAlign: 'center' }}>
-				MUSIC WEB ©2020 Created by Quoc Thuan
+			<Footer
+				className="footer"
+				style={{
+					position: '-webkit-sticky',
+					position: 'sticky',
+					zIndex: 1,
+					bottom: '0%',
+					width: '100%',
+					height: '13vh',
+					backgroundColor: 'green',
+					padding: 5,
+					justifyContent: 'center',
+					justifyItems: 'center',
+					alignItems: 'center',
+				}}
+			>
+				<MiniPlayerControls></MiniPlayerControls>
 			</Footer>
 		</Layout>
 	);

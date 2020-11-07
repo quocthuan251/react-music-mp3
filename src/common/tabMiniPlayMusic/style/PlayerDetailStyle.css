@@ -1,0 +1,22 @@
+.player-detail-group {
+	height: 100%;
+}
+.image-song {
+	width: 9vh;
+	border-radius: 50em
+}
+.countdown {
+	/* font-size: small;
+	color: violet; */
+	background-color: tomato;
+}
+/* .timer {
+	font-size: 125;
+	font-weight: 600;
+	opacity: 0.5;
+} */
+.miniNameSong {
+	font-size: 18;
+	font-weight: 900;
+	/* opacity: 0.5; */
+}

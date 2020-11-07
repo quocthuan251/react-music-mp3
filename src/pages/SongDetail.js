@@ -47,7 +47,7 @@ const SongDetail = () => {
 	};
 
 	return (
-		<div className="App">
+		<div className="SongDetail">
 			<img className="Song-Thumbnail" src={TetImg} alt="tet" />
 			<h2 className="Song-Title">{audios[audioIndex].title}</h2>
 			<p className="Singer">{audios[audioIndex].artist}</p>

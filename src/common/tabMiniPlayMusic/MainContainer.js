@@ -2,6 +2,8 @@ import React from 'react';
 import TimeSlider from 'react-input-slider';
 import { Row, Col, Divider } from 'antd';
 import MiniPlayer from './MiniPlayer';
+import PlayerDetail from './PlayerDetail';
+import './style/MainContainerStyle.css';
 const style = { background: '#0092ff', padding: '0px 0' };
 class MainContainer extends React.Component {
 	constructor(props) {
@@ -16,7 +18,7 @@ class MainContainer extends React.Component {
 	}
 	render() {
 		return (
-			<div>
+			<div className="main-container-mini">
 				<Row
 					gutter={{ xs: 0, sm: 0, md: 0, lg: 10 }}
 					style={{ textAlign: 'center' }}
@@ -26,13 +28,15 @@ class MainContainer extends React.Component {
 							<MiniPlayer></MiniPlayer>
 						</div>
 					</Col>
-					<Col className="gutter-row" span={6}>
+					<Col className="gutter-row" span={8}>
+						<div style={style}>
+							<PlayerDetail></PlayerDetail>
+						</div>
+					</Col>
+					<Col className="gutter-row" span={5}>
 						<div style={style}>col-6</div>
 					</Col>
-					<Col className="gutter-row" span={6}>
-						<div style={style}>col-6</div>
-					</Col>
-					<Col className="gutter-row" span={6}>
+					<Col className="gutter-row" span={5}>
 						<div style={style}>col-6</div>
 					</Col>
 				</Row>

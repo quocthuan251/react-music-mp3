@@ -48,7 +48,7 @@ class PlayerDetail extends React.Component {
 						/>
 					</Col>
 					<Col span={18}>
-						<Row style={{ backgroundColor: 'white' }}>
+						<Row style={{}}>
 							<Col span={18} className="miniNameSong">
 								<marquee
 									width="90%"

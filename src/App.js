@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
@@ -53,7 +52,6 @@ function App() {
 					backgroundColor: 'white',
 				}}
 			>
-				<div className="logo" />
 				<HeaderLayout> </HeaderLayout>
 			</Header>
 			<Content
@@ -91,7 +89,7 @@ function App() {
 					bottom: '0%',
 					width: '100%',
 					height: '13vh',
-					backgroundColor: 'green',
+					backgroundColor: '#DCD1AD',
 					// padding: 5,
 					justifyContent: 'center',
 					justifyItems: 'center',

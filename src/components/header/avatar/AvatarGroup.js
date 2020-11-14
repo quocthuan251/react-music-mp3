@@ -15,6 +15,7 @@ import './Style.css';
 import { Row, Col } from 'antd';
 import { message, Tooltip } from 'antd';
 import { BellOutlined, UserOutlined, LogoutOutlined } from '@ant-design/icons';
+import Signin from '../../../pages/signin/Signin';
 
 function handleMenuClick(e) {
 	message.info('Click on menu item.');
@@ -131,6 +132,7 @@ export class AvatarGroup extends Component {
 						{/* <Avatar size={40} src={<Image src={avatarDefault} />} /> */}
 						{/* </Button> */}
 					</Popover>
+					<Signin></Signin>
 				</div>
 				{/* <Logo>
 

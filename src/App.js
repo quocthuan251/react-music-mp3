@@ -68,13 +68,6 @@ function App() {
 					className="site-layout-background"
 					style={{ padding: 24, minHeight: 380 }}
 				>
-					{/* <Router>
-						<Switch>
-							<Route exact path="/" component={HomePage} /> */}
-					{/* <Route path="/:id" component={UserPage} /> */}
-					{/* <Route path="/songdetail" component={SongDetail} />
-						</Switch>
-					</Router> */}
 					<Router>
 						<div className="App">{showContent()}</div>
 					</Router>

@@ -1,4 +1,4 @@
-/* * {
+* {
 	box-sizing: border-box;
 }
 
@@ -38,7 +38,7 @@
 	cursor: pointer;
 	/* > * {
 		cursor: pointer;
-	} 
+	} */
 	color: white;
 }
 
@@ -51,10 +51,10 @@
 	display: flex;
 	justify-content: center;
 	width: 14px;
+	/* height: 22px; */
 	margin: 0 32px;
 
-	svg {
+	/* svg {
 		height: 22px;
-	}
+	} */
 }
-}*/

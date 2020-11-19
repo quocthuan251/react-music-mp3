@@ -6,6 +6,7 @@ const UserPage = lazy(() => import('./pages/UserPage'));
 const SongDetailPage = lazy(() => import('./pages/SongDetail'));
 const LoginPage = lazy(() => import('./pages/signin/Signin'));
 const MusicChart = lazy(() => import('./pages/charts/MusicChart'));
+const NewPlayList = lazy(() => import('./pages/newReleases/NewPlayList'))
 
 const route = [
 	{
@@ -21,6 +22,13 @@ const route = [
 		auth: false,
 		layout: HomeLayout,
 		main: (props) => <MusicChart router={props} />,
+	},
+	{
+		path: '/new-release',
+		exact: false,
+		auth: false,
+		layout: HomeLayout,
+		main: (props) => <NewPlayList router={props} />,
 	},
 	// {
 	// 	path: '/:id',

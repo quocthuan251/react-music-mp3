@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button, Row, Col, List, Avatar, Divider, Table } from 'antd';
 import RecommnendList from '../../components/home/category/Recommend';
 import top50 from '../../images/top_50.jpg';
+import SonTung from '../../images/sontung.png';
 
 const columns = [
 	{
@@ -90,7 +91,7 @@ export class MusicChart extends Component {
 										src={top50}
 										alt="Top Music"
 										style={{
-											width: '350px',
+											width: '320px',
 											height: '290px',
 											margin: '2rem',
 										}}
@@ -134,12 +135,63 @@ export class MusicChart extends Component {
 							</Col>
 						</Row>
 					</div>
-					<Table
-						style={{ marginTop: '2rem' }}
-						columns={columns}
-						dataSource={data}
-					/>
-					;
+					<div>
+						<List
+							itemLayout="horizontal"
+							dataSource={data}
+							renderItem={(item) => (
+								<List.Item>
+									<List.Item.Meta
+										style={{
+											textAlign: 'initial',
+											maxWidth: '15%',
+											textAlign: 'center',
+										}}
+										title={<span>{item.key}</span>}
+									></List.Item.Meta>
+									<List.Item.Meta
+										style={{
+											textAlign: 'initial',
+											marginLeft: '2rem',
+										}}
+										avatar={
+											<Link
+												to={{
+													pathname: '/songdetail',
+													aboutProps: {
+														item: item,
+													},
+												}}
+											>
+												<img
+													style={{
+														height: '100px',
+													}}
+													src={SonTung}
+												/>
+											</Link>
+										}
+										title={
+											<Link
+												to={{
+													pathname: '/songdetail',
+													aboutProps: {
+														item: item,
+													},
+												}}
+											>
+												<br />
+												<span>{item.name}</span>
+												<br />
+												<span>{item.singer}</span>
+											</Link>
+										}
+										// description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+									/>
+								</List.Item>
+							)}
+						/>
+					</div>
 				</div>
 			</>
 		);

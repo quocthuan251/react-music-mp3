@@ -41,10 +41,16 @@ export class Header extends Component {
 								<Logo>
 									<Avatar
 										size={40}
-										src={<Image src={logo} />}
+										src={
+											<a href="/">
+												<Image src={logo} />
+											</a>
+										}
 									/>
 								</Logo>
-								<h1>Music Cloud</h1>
+								<a href="/">
+									<h1>Music Cloud</h1>
+								</a>
 							</Col>
 							<Col span={9}>
 								<NavigationPage></NavigationPage>

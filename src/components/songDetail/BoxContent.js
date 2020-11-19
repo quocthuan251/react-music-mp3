@@ -10,7 +10,7 @@ import {
 } from '@ant-design/icons';
 import './style/BoxContent.css';
 import TetImg from '../../images/vinile.png';
-import MusicImg from '../../images/music-48.png';
+import SonTung from '../../images/sontung.png';
 import audios from '../../audios';
 const iconStyle = {
 	fontSize: '26px',
@@ -51,22 +51,38 @@ const BoxContent = () => {
 	const data = [
 		{
 			title: 'Ant Design Title 1',
+			singer: 'Thịnh Suy',
 		},
 		{
 			title: 'Ant Design Title 2',
+			singer: 'Min',
 		},
 		{
 			title: 'Ant Design Title 3',
+			singer: 'Kay Trần',
 		},
 		{
 			title: 'Ant Design Title 4',
+			singer: 'Sơn Tùng MTP',
+		},
+		{
+			title: 'Ant Design Title 5',
+			singer: 'Hương Tràm',
 		},
 	];
 
 	return (
 		<div>
 			<Row>
-				<Col span={8} style={{ background: '#333' }}>
+				<Col
+					span={8}
+					style={{
+						background: '#333',
+						maxHeight: '400px',
+						marginLeft: '2rem',
+						borderRadius: '5px',
+					}}
+				>
 					<img className="Song-Thumbnail" src={TetImg} alt="tet" />
 					<h2 className="Song-Title">{audios[audioIndex].title}</h2>
 					<p className="Singer">{audios[audioIndex].artist}</p>
@@ -136,7 +152,7 @@ const BoxContent = () => {
 						onEnded={() => setPlay(false)}
 					/>
 				</Col>
-				<Col span={16}>
+				<Col span={15}>
 					<div>
 						<h2> NGHE TIẾP</h2>
 						<List
@@ -149,11 +165,20 @@ const BoxContent = () => {
 											textAlign: 'initial',
 											marginLeft: '20%',
 										}}
-										avatar={<Avatar src={MusicImg} />}
+										avatar={
+											<img
+												style={{
+													height: '100px',
+												}}
+												src={SonTung}
+											/>
+										}
 										title={
-											<a href="https://ant.design">
-												{item.title}
-											</a>
+											<div>
+												<a href="#">{item.title}</a>
+												<br />
+												<span>{item.singer}</span>
+											</div>
 										}
 										// description="Ant Design, a design language for background applications, is refined by Ant UED Team"
 									/>

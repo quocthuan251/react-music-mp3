@@ -15,18 +15,18 @@ const iconStyle = {
 	fontSize: '26px',
 };
 
-const SongDetail = () => {
+const SongDetail = (props) => {
 	const audioRef = useRef();
 	const [audioIndex, setAudioIndex] = useState(0);
 	const [currentTime, setCurrentTime] = useState(0);
 	const [duration, setDuration] = useState(0);
 	const [isPlay, setPlay] = useState(false);
-
 	const handleLoadedData = () => {
 		setDuration(audioRef.current.duration);
 		if (isPlay) audioRef.current.play();
 	};
-
+	
+	console.log('songdetail', props.router.location.aboutProps);
 	const handlePausePlayClick = () => {
 		if (isPlay) {
 			audioRef.current.pause();

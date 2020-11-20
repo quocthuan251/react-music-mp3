@@ -18,6 +18,9 @@ export class NavigationPage extends Component {
 							<a href="/new-release">MỚI PHÁT HÀNH</a>
 						</Button>
 						<Button type="link">TOP 100</Button>
+						<Button type="link">
+							<a href="/singer">NGHỆ SĨ</a>
+						</Button>
 					</Space>
 				</div>
 			</>

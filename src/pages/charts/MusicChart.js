@@ -157,7 +157,7 @@ export class MusicChart extends Component {
 										avatar={
 											<Link
 												to={{
-													pathname: '/songdetail',
+													pathname: `/songdetail`,
 													aboutProps: {
 														item: item,
 													},

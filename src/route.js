@@ -8,6 +8,8 @@ const LoginPage = lazy(() => import('./pages/signin/Signin'));
 const MusicChart = lazy(() => import('./pages/charts/MusicChart'));
 const NewPlayList = lazy(() => import('./pages/newReleases/NewPlayList'));
 const SingerDeatil = lazy(() => import('./pages/singers/SingerDetail'));
+const Artist = lazy(() => import('./components/singer/Artist'));
+
 const route = [
 	{
 		path: '/',
@@ -18,24 +20,31 @@ const route = [
 	},
 	{
 		path: '/top-new',
-		exact: false,
+		exact: true,
 		auth: false,
 		layout: HomeLayout,
 		main: (props) => <MusicChart router={props} />,
 	},
 	{
 		path: '/new-release',
-		exact: false,
+		exact: true,
 		auth: false,
 		layout: HomeLayout,
 		main: (props) => <NewPlayList router={props} />,
 	},
 	{
 		path: '/singer',
-		exact: false,
+		exact: true,
 		auth: false,
 		layout: HomeLayout,
 		main: (props) => <SingerDeatil router={props} />,
+	},
+	{
+		path: `/singer/:id`,
+		exact: true,
+		auth: false,
+		layout: HomeLayout,
+		main: (props) => <Artist router={props} />,
 	},
 	// {
 	// 	path: '/:id',

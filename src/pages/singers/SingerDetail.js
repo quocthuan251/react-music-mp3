@@ -197,7 +197,7 @@ export class SingerDetail extends React.Component {
 							<List.Item>
 								<Link
 									to={{
-										pathname: '/songdetail',
+										pathname: `/singer/${item.singer}`,
 										aboutProps: {
 											item: item,
 										},

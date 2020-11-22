@@ -1,23 +1,26 @@
 import React from 'react';
 import { Row, Col } from 'antd';
-// import './HomeStyle.css';
 import { Card, Avatar, Button } from 'antd';
-import axios from 'axios';
 import {
 	EllipsisOutlined,
 	CaretRightOutlined,
 	HeartOutlined,
 } from '@ant-design/icons';
+import { actions as homeActions, getSongs } from '../reducer';
+import { connect } from 'react-redux';
+import TestRedux from './TestRedux';
 
 const { Meta } = Card;
 const style = { background: '#0092ff', padding: '0px 0' };
 
+const testLog = () => {
+	console.log('kkkkkkkkk');
+};
 function CardSong(props) {
 	return (
 		<Col className="gutter-row" span={4}>
 			<div style={style}>
 				<Card
-					// style={{ width: 176 }}
 					cover={
 						<img
 							alt="example"
@@ -25,18 +28,13 @@ function CardSong(props) {
 						/>
 					}
 					actions={[
-						<HeartOutlined key="like" />,
+						<HeartOutlined onClick={testLog} key="like" />,
 						<CaretRightOutlined key="play" />,
 						<EllipsisOutlined key="ellipsis" />,
 					]}
 				>
-					{/* <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" /> */}
-
 					<Meta
-						// avatar={
-						// 	<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-						// }
-						title="We Will Rock"
+						title="sdas"
 						description="The best music on the world"
 					/>
 				</Card>
@@ -44,76 +42,49 @@ function CardSong(props) {
 		</Col>
 	);
 }
-function ListCardSong(props) {
-	const listSong = props.listSong;
-	// console.log('hekkk' + listSong);
-	const listItems = listSong.map((song) => (
-		<CardSong key={song.id} value={song.title} />
-	));
-	return <Row gutter={{ xs: 0, sm: 0, md: 0, lg: 10 }}>{listItems}</Row>;
-}
-const listSong = [
-	{ id: 1, title: 'Hello World', content: 'Welcome to learning React!' },
-	{
-		id: 2,
-		title: 'Installation',
-		content: 'You can install React from npm.',
-	},
-	{
-		id: 3,
-		title: 'Installation',
-		content: 'You can install React from npm.',
-	},
-	{
-		id: 4,
-		title: 'Installation',
-		content: 'You can install React from npm.',
-	},
-	{
-		id: 5,
-		title: 'Installation',
-		content: 'You can install React from npm.',
-	},
-	{
-		id: 6,
-		title: 'Installation',
-		content: 'You can install React from npm.',
-	},
-];
+
 class Recommend extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			data: null,
+			data: props.result,
 		};
 	}
 	componentDidMount() {
-		axios.get(`http://demo7080721.mockable.io/get-playlist`).then((res) => {
-			const data = res.data;
-			this.setState({ data });
-		});
-		// const getUser = async () => {
-		// 	const { data } = await axios(
-		// 		`http://demo7080721.mockable.io/get-playlist`
-		// 	);
-
-		// 	this.setState({ data });
-		// };
+		this.props.getListSong();
+		// this.props.getListSongTest();
 	}
-	getListSong = () => {
-		const test = [];
-		for (let i = 0; i < 6; i++) {
-			test.push(this.state.data.song.items[i]);
-		}
-		console.log(test);
+	test = () => {
+		console.log('test componet');
+		console.log(this.props.result);
 	};
 	render() {
 		return (
 			<>
-				<Button onClick={this.getListSong}>log data</Button>
-				<ListCardSong listSong={listSong}></ListCardSong>
+				<Button onClick={this.test}>sdf</Button>
+				<TestRedux></TestRedux>
+				<CardSong></CardSong>
 			</>
 		);
 	}
 }
+const mapStateToProps = (state) => {
+	return {
+		result: state.user,
+		// listSong: getSongs(state).toJS(),
+	};
+	// article: state.news,
+	// listSong: getSongs(state).toJS(),
+};
+const mapDispatchToProps = (dispatch, props) => {
+	return {
+		getListSong: () => {
+			dispatch(homeActions.getList());
+		},
+		getListSongTest: () => {
+			dispatch(homeActions.getListTest());
+		},
+	};
+};
+Recommend = connect(mapStateToProps, mapDispatchToProps)(Recommend);
 export default Recommend;

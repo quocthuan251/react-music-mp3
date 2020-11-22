@@ -5,10 +5,35 @@ import './index.css';
 import App from './App';
 import 'antd/dist/antd.css';
 import reportWebVitals from './reportWebVitals';
+import createSagaMiddleware from 'redux-saga';
+import { createStore, applyMiddleware, compose } from 'redux';
+import { Provider } from 'react-redux';
+import { logger } from 'redux-logger';
+import reducer from './reducers';
+import rootSaga from './sagas';
+// import { composeWithDevTools } from 'redux-devtools-extension';
+
+const composeEnhancers =
+	process.env.NODE_ENV !== 'production' &&
+	typeof window === 'object' &&
+	window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+		? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+				shouldHotReload: false,
+		  })
+		: compose;
+
+const sagaMiddleware = createSagaMiddleware();
+const middlewares = [sagaMiddleware];
+const enhancers = [applyMiddleware(...middlewares, logger)];
+
+const store = createStore(reducer, composeEnhancers(...enhancers));
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
 	<React.StrictMode>
-		<App />
+		<Provider store={store}>
+			<App />
+		</Provider>
 	</React.StrictMode>,
 	document.getElementById('root')
 );

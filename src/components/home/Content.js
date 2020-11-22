@@ -9,12 +9,8 @@ const style = { background: '#0092ff', padding: '0px 0' };
 class Content extends React.Component {
 	constructor(props) {
 		super(props);
-
-		// We declare the state as shown below
-
 		this.state = {
 			x: 'This is x from state',
-			y: 'This is y from state',
 		};
 	}
 	render() {

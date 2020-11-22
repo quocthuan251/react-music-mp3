@@ -4,8 +4,6 @@ import { Space, Typography, Divider, Button } from 'antd';
 export class NavigationPage extends Component {
 	state = {};
 
-	componentWillMount = () => {};
-
 	render() {
 		return (
 			<>

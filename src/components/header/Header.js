@@ -5,7 +5,6 @@ import AvatarGroup from './avatar/AvatarGroup';
 import NavigationPage from './navigation/NavigationPage';
 import SearchInput from './searchBar/SearchInput';
 import { Row, Col } from 'antd';
-import { Logo } from './styles';
 import './HeaderStyle.css';
 
 export class Header extends Component {
@@ -13,50 +12,34 @@ export class Header extends Component {
 		pageIndex: 0,
 	};
 
-	componentWillMount = () => {};
+
 
 	render() {
 		return (
 			<>
-				<Row>
-					<Col
-						span={24}
-						style={{
-							backgroundColor: '#28a745',
-							height: 64,
-							//textAlign: 'center',
-							// marginLeft: 30,
-						}}
-					>
+				<Row style={{}}>
+					<Col span={4} style={{}}>
 						<Row>
-							<Col
-								span={4}
-								style={{
-									backgroundColor: 'white',
-									//textAlign: 'center',
-									// marginLeft: 30,
-									height: 64,
-								}}
-							>
-								<Logo>
-									<Avatar
-										size={40}
-										src={<Image src={logo} />}
-									/>
-								</Logo>
-								<h1>Music Cloud</h1>
+							<Col span={6}>
+								<Avatar size={40} src={<Image src={logo} />} />
 							</Col>
-							<Col span={9}>
-								<NavigationPage></NavigationPage>
-							</Col>
-							<Col span={5} className="inputSearchHeader">
-								<SearchInput></SearchInput>
-							</Col>
-							{/* <Col span={1}>col-2</Col> */}
-							<Col span={6} style={{}}>
-								<AvatarGroup style={{}}></AvatarGroup>
+							<Col span={18}>
+								<h3>Music cloud</h3>
 							</Col>
 						</Row>
+					</Col>
+					<Col span={9}>
+						<NavigationPage></NavigationPage>
+					</Col>
+					<Col
+						span={5}
+						className="inputSearchHeader"
+						style={{ display: 'flex' }}
+					>
+						<SearchInput></SearchInput>
+					</Col>
+					<Col span={6}>
+						<AvatarGroup style={{}}></AvatarGroup>
 					</Col>
 				</Row>
 			</>

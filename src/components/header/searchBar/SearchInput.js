@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Space, Typography, Divider, Button } from 'antd';
 import { Input, AutoComplete } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import './SearchStyle.css';
@@ -78,13 +76,7 @@ const Complete = () => (
 
 export class SearchInput extends Component {
 	render() {
-		return (
-			<>
-				<div>
-					<Complete />
-				</div>
-			</>
-		);
+		return <Complete />;
 	}
 }
 

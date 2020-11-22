@@ -1,19 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import {
-	Input,
-	Icon,
-	Menu,
-	Dropdown,
-	Button,
-	Avatar,
-	Image,
-	Popover,
-} from 'antd';
+import { Menu, Button, Popover } from 'antd';
 import avatarDefault from '../../../images/vinile.png';
 import './Style.css';
-import { Row, Col } from 'antd';
-import { message, Tooltip } from 'antd';
+import { message } from 'antd';
 import { BellOutlined, UserOutlined, LogoutOutlined } from '@ant-design/icons';
 import Signin from '../../../pages/signin/Signin';
 
@@ -62,22 +51,7 @@ const notifi = (
 );
 
 export class AvatarGroup extends Component {
-	state = {};
-
-	componentWillMount = () => {
-		// const { location } = this.props
-		// const { pathname } = location
-		// this.setState({
-		//   pageIndex: pageIndexMapping[pathname],
-		// })
-	};
-
-	// changePageIndex = index => {
-	//   this.setState({
-	//     pageIndex: index,
-	//   })
-	// }
-
+	
 	render() {
 		return (
 			<>
@@ -92,18 +66,7 @@ export class AvatarGroup extends Component {
 						trigger="click"
 						className="ring"
 					>
-						{/* <Button
-							style={{
-								backgroundImage: `url(${avatarDefault})`,
-								textAlign: 'center',
-								// marginLeft: 30,
-							}}
-						>
-
-						hêllo
-						</Button> */}
 						<Button
-							//	type="primary"
 							shape="circle"
 							icon={<BellOutlined />}
 							size={'large'}
@@ -120,24 +83,9 @@ export class AvatarGroup extends Component {
 								marginBottom: 5,
 							}}
 						/>
-
-						{/* <Button
-							style={{
-								backgroundImage: `url(${avatarDefault})`,
-								textAlign: 'center',
-								// marginLeft: 30,
-							}}
-						> */}
-
-						{/* <Avatar size={40} src={<Image src={avatarDefault} />} /> */}
-						{/* </Button> */}
 					</Popover>
-					<Signin></Signin>
+					{/* <Signin></Signin> */}
 				</div>
-				{/* <Logo>
-
-					<Avatar size={40} src={<Image src={logo} />} />
-				</Logo>							 */}
 			</>
 		);
 	}

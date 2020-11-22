@@ -1,10 +1,10 @@
-/* * {
+* {
 	box-sizing: border-box;
 }
 
 .SongDetail {
 	min-height: 100vh;
-	padding: 120px 0;
+	padding: 50px 0;
 	background-color: #f6f6f6;
 	color: #101010;
 	text-align: center;
@@ -14,7 +14,7 @@
 	width: 150px;
 	height: 150px;
 	border-radius: 100%;
-	margin-top: 15px;
+	margin-top: 3rem;
 	object-fit: cover;
 }
 
@@ -38,7 +38,7 @@
 	cursor: pointer;
 	/* > * {
 		cursor: pointer;
-	} 
+	} */
 	color: white;
 }
 
@@ -51,10 +51,10 @@
 	display: flex;
 	justify-content: center;
 	width: 14px;
+	/* height: 22px; */
 	margin: 0 32px;
 
-	svg {
+	/* svg {
 		height: 22px;
-	}
+	} */
 }
-}*/

@@ -12,8 +12,6 @@ export class Header extends Component {
 		pageIndex: 0,
 	};
 
-
-
 	render() {
 		return (
 			<>
@@ -28,7 +26,7 @@ export class Header extends Component {
 							</Col>
 						</Row>
 					</Col>
-					<Col span={9}>
+					<Col span={11}>
 						<NavigationPage></NavigationPage>
 					</Col>
 					<Col
@@ -38,7 +36,7 @@ export class Header extends Component {
 					>
 						<SearchInput></SearchInput>
 					</Col>
-					<Col span={6}>
+					<Col span={4}>
 						<AvatarGroup style={{}}></AvatarGroup>
 					</Col>
 				</Row>

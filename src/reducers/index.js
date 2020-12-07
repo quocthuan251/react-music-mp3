@@ -1,27 +1,9 @@
+//main redux
 import { combineReducers } from 'redux';
-import user from '../components/home/reducer';
-
-const reducer2 = (state = {}, action) => {
-	switch (action.type) {
-		case 'GET_NEWS':
-			return { ...state, loading: true };
-		case 'NEWS_RECEIVED':
-			return { ...state, news: action.json[0], loading: false };
-		//TEST
-		case 'GET_LIST_SONG':
-			return { ...state, loading: true };
-		case 'GET_LIST_SONG_SUCCESS':
-			return {
-				...state,
-				listSong: action.response,
-				loading: false,
-			};
-		//end test
-		default:
-			return state;
-	}
-};
+import song from '../components/home/reducer';
+import reducerArtist from '../components/singer/reducer';
 const reducer = combineReducers({
-	user,
+	song,
+	reducerArtist,
 });
 export default reducer;

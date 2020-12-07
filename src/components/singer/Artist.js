@@ -5,6 +5,8 @@ import { Button, Row, Col, List, Avatar, Table, Card } from 'antd';
 import Min from '../../images/min.jpg';
 import SonTung from '../../images/sontung.png';
 import TrenTinhBan from '../../images/img_trentinhban.png';
+import { connect } from 'react-redux';
+import { getArtistTest } from './reducer';
 
 const { Meta } = Card;
 const data = [
@@ -95,7 +97,16 @@ export class Artist extends React.Component {
 		console.log(this.state.item);
 	}
 	componentWillMount = () => {};
+	test = () => {
+		console.log('test redux in class artist');
+		this.props.getArtistTest();
+		// console.log(this.props.testttt);
+	};
+	test2 = () => {
+		console.log('test redux in class artist');
 
+		console.log(this.props.artists);
+	};
 	render() {
 		return (
 			<>
@@ -266,9 +277,17 @@ export class Artist extends React.Component {
 						/>
 					</div>
 				</div>
+				<Button onClick={this.test}>test redux</Button>
+				<Button onClick={this.test2}>test2 redux</Button>
 			</>
 		);
 	}
 }
-
+const mapStateToProps = (state) => ({
+	artists: state.reducerArtist.artist,
+});
+const mapDispatchToProps = {
+	getArtistTest: getArtistTest,
+};
+Artist = connect(mapStateToProps, mapDispatchToProps)(Artist);
 export default Artist;

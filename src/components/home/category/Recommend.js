@@ -8,7 +8,7 @@ import {
 } from '@ant-design/icons';
 import { actions as homeActions, getSongs } from '../reducer';
 import { connect } from 'react-redux';
-import TestRedux from './TestRedux';
+// import TestRedux from './TestRedux';
 
 const { Meta } = Card;
 const style = { background: '#0092ff', padding: '0px 0' };
@@ -24,7 +24,7 @@ function CardSong(props) {
 					cover={
 						<img
 							alt="example"
-							src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+							src="https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/cover/7/7/1/f/771fbf979c3a1f8688c33fdceb9184b3.jpg"
 						/>
 					}
 					actions={[
@@ -47,22 +47,32 @@ class Recommend extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			data: props.result,
+			data: this.props.result,
 		};
 	}
 	componentDidMount() {
 		this.props.getListSong();
-		// this.props.getListSongTest();
+		this.test3();
 	}
-	test = () => {
-		console.log('test componet');
-		console.log(this.props.result);
+	test22 = () => {
+		console.log('test state li');
+		const url = this.props.result.song.items[1];
+		// console.log(url.thumbnail_medium);
+		// console.log(this.props.result.song.items.slice(1, 2));
+		// console.log(this.state.data);
 	};
+	test3 = () => {
+		const datatest = this.props.result;
+		console.log('test3');
+		console.log(datatest);
+	};
+
 	render() {
+		// const datatest = this.props.result.song.items.slice(1, 2);
 		return (
 			<>
-				<Button onClick={this.test}>sdf</Button>
-				<TestRedux></TestRedux>
+				<Button onClick={this.test22}>test2</Button>
+				{/* <p>{this.state.data}</p> */}
 				<CardSong></CardSong>
 			</>
 		);
@@ -70,11 +80,8 @@ class Recommend extends React.Component {
 }
 const mapStateToProps = (state) => {
 	return {
-		result: state.user,
-		// listSong: getSongs(state).toJS(),
+		result: getSongs(state).toJS(),
 	};
-	// article: state.news,
-	// listSong: getSongs(state).toJS(),
 };
 const mapDispatchToProps = (dispatch, props) => {
 	return {

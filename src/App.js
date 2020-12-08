@@ -1,7 +1,15 @@
 import './App.css';
 import React, { Suspense } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import {
+	Switch,
+	Route,
+	Redirect,
+	BrowserRouter as Router,
+} from 'react-router-dom';
 import HomePage from './pages/HomePage';
+import SigninPage from './pages/signin/Signin';
+import SignupPage from './pages/signup/signup';
+import { MainLayout, LoginLayout } from './common/layout/Layout';
 import UserPage from './pages/UserPage';
 import SongDetail from './pages/SongDetail';
 import HeaderLayout from './components/header/Header';
@@ -18,82 +26,77 @@ const WaitingComponent = (Component) => (props) => (
 		<Component {...props} />
 	</Suspense>
 );
-
+const PrivateRoute = ({ isLogin, component: Component, ...rest }) => (
+	<Route
+		{...rest}
+		render={(props) =>
+			isLogin ? (
+				<Component {...props} />
+			) : (
+				<Redirect
+					to={{
+						pathname: '/signin',
+					}}
+				/>
+			)
+		}
+	/>
+);
 function App() {
 	const showContent = () => {
 		let result = [];
 		let isLogin = true;
 		if (routes.length > 0) {
 			result = routes.map((route, index) => {
-				if (route.auth && !isLogin) {
-					return <HomePage></HomePage>;
+				const layout = route.layout;
+				if (route.auth && isLogin) {
+					return (
+						<PrivateRoute
+							key={index}
+							path={route.path}
+							exact={route.exact}
+							component={WaitingComponent(route.main)}
+							isLogin={!isLogin}
+						/>
+					);
+				} else {
+					return (
+						<RouteWrapper
+							key={index}
+							path={route.path}
+							exact={route.exact}
+							component={WaitingComponent(route.main)}
+							layout={layout}
+						/>
+					);
 				}
-
-				return (
-					<Route
-						key={index}
-						path={route.path}
-						exact={route.exact}
-						component={WaitingComponent(route.main)}
-					/>
-				);
 			});
 		}
 		return <Switch>{result}</Switch>;
 	};
 
 	return (
-		<Layout>
-			<Header
-				style={{
-					position: 'fixed',
-					zIndex: 1,
-					width: '100%',
-					backgroundColor: 'white',
-				}}
-			>
-				<HeaderLayout> </HeaderLayout>
-			</Header>
-			<Content
-				className="site-layout"
-				style={{
-					padding: '0 50px',
-					marginTop: 64,
-					color: 'black',
-					backgroundColor: '#FCFCFC',
-					// position: 'relative',
-				}}
-			>
-				<div
-					className="site-layout-background"
-					style={{ padding: 24, minHeight: 380 }}
-				>
-					<Router>
-						<div className="App">{showContent()}</div>
-					</Router>
-				</div>
-			</Content>
-			<Footer
-				className="footer"
-				style={{
-					position: '-webkit-sticky',
-					position: 'sticky',
-					zIndex: 1,
-					bottom: '0%',
-					width: '100%',
-					height: '13vh',
-					backgroundColor: '#DCD1AD',
-					// padding: 5,
-					justifyContent: 'center',
-					justifyItems: 'center',
-					alignItems: 'center',
-					padding: 0,
-				}}
-			>
-				<MiniPlayerControls></MiniPlayerControls>
-			</Footer>
-		</Layout>
+		<Router>
+			<div className="App">{showContent()}</div>
+		</Router>
 	);
 }
-
+function RouteWrapper({
+	component: Component,
+	layout: Layout,
+	exact: exact,
+	...rest
+}) {
+	return (
+		<Route
+			exact
+			{...rest}
+			render={(props) => (
+				<Layout {...props}>
+					<Component {...props} />
+				</Layout>
+			)}
+		/>
+	);
+}
 export default App;

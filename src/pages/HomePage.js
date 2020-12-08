@@ -9,7 +9,7 @@ export default function HomePage() {
 			<Content></Content>
 			<h1>Home Page</h1>
 			<p>
-				<Link to="/songdetail">taniarascia</Link> on GitHub.
+				{/* <Link to="/songdetail">taniarascia</Link> on GitHub. */}
 			</p>
 		</div>
 	);

@@ -39,7 +39,7 @@ class PlayerDetail extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div style={{ color: 'white' }}>
 				<Row className="player-detail-group">
 					<Col span={6}>
 						<Image

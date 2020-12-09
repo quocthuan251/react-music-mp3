@@ -3,6 +3,7 @@ import { Layout, Menu, Breadcrumb } from 'antd';
 import { Spin } from 'antd';
 import HeaderLayout from '../../components/header/Header';
 import MiniPlayerControls from '../../common/tabMiniPlayMusic/MainContainer';
+import './LayoutStyle.css';
 const { Header, Content, Footer } = Layout;
 // import HeaderLayout from './components/header/Header';
 const MainLayout = ({ children }) => (
@@ -12,7 +13,7 @@ const MainLayout = ({ children }) => (
 				position: 'fixed',
 				zIndex: 1,
 				width: '100%',
-				backgroundColor: 'white',
+				backgroundColor: '#040404',
 			}}
 		>
 			<HeaderLayout> </HeaderLayout>
@@ -22,21 +23,21 @@ const MainLayout = ({ children }) => (
 			style={{
 				padding: '0 50px',
 				marginTop: 64,
-				color: 'black',
-				// backgroundColor: '#FCFCFC',
+				color: '#FFFFFF',
+				backgroundColor: '#121212',
 				// position: 'relative',
 			}}
 		>
 			<div
-					
-					// style={{ padding: 24, minHeight: 380 }}
-				>
-			{children}
+
+			// style={{ padding: 24, minHeight: 380 }}
+			>
+				{children}
 			</div>
 		</Content>
 		{/* <h1>helllllllllllllllll</h1> */}
 		<Footer
-			className="footer"
+			className="footer-main"
 			style={{
 				position: '-webkit-sticky',
 				position: 'sticky',
@@ -44,7 +45,7 @@ const MainLayout = ({ children }) => (
 				bottom: '0%',
 				width: '100%',
 				height: '13vh',
-				backgroundColor: '#DCD1AD',
+				backgroundColor: '#282828',
 				// padding: 5,
 				justifyContent: 'center',
 				justifyItems: 'center',
@@ -57,10 +58,6 @@ const MainLayout = ({ children }) => (
 	</Layout>
 );
 
-const LoginLayout = ({ children }) => (
-	<div>
-		{children}
-	</div>
-);
+const LoginLayout = ({ children }) => <div>{children}</div>;
 
 export { MainLayout, LoginLayout };

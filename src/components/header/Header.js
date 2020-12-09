@@ -22,7 +22,7 @@ export class Header extends Component {
 								<Avatar size={40} src={<Image src={logo} />} />
 							</Col>
 							<Col span={18}>
-								<h3>Music cloud</h3>
+								<h3 style={{ color: 'white' }}>Music cloud</h3>
 							</Col>
 						</Row>
 					</Col>

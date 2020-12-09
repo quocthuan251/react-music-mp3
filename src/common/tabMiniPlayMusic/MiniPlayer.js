@@ -1,6 +1,6 @@
 import React from 'react';
 import TimeSlider from 'react-input-slider';
-
+import { Row, Col } from 'antd';
 import {
 	PlayCircleOutlined,
 	PauseOutlined,
@@ -9,35 +9,69 @@ import {
 	RetweetOutlined,
 	SwapOutlined,
 } from '@ant-design/icons';
-
+import TimeLineSong from './TimeLineSong';
+import './style/MiniPlayerStyle.css';
 const iconStyle = {
-	fontSize: '26px',
+	fontSize: '20px',
 };
 class MiniPlayer extends React.Component {
 	constructor(props) {
 		super(props);
-
-		// We declare the state as shown below
-
 		this.state = {
-			x: 'This is x from state',
-			y: 'This is y from state',
+			isPlay: false,
 		};
+		this.handlePausePlayClick = this.handlePausePlayClick.bind(this);
+	}
+	handlePausePlayClick() {
+		this.setState({
+			isPlay: !this.state.isPlay,
+		});
 	}
 	render() {
 		return (
 			<div>
-				<BackwardOutlined style={iconStyle} />
-				{/* <PauseOutlined style={iconStyle} /> */}
-				<PlayCircleOutlined
-					style={{
-						fontSize: '36px',
-						margin: '10px',
-					}}
-				/>
-				<ForwardOutlined style={iconStyle} />
-				<SwapOutlined style={iconStyle} />
-				<RetweetOutlined style={iconStyle} />
+				<Row>
+					<Col span={24}>
+						<div
+							className="Control-Button-Group"
+							style={{ marginBottom: 5 }}
+						>
+							<div className="retweet-Button">
+								<RetweetOutlined style={iconStyle} />
+							</div>
+							<div className="Prev-Button">
+								<BackwardOutlined style={iconStyle} />
+							</div>
+							<div
+								className="Pause-Play-Button"
+								onClick={this.handlePausePlayClick}
+							>
+								{this.state.isPlay ? (
+									<PauseOutlined style={iconStyle} />
+								) : (
+									<PlayCircleOutlined style={iconStyle} />
+								)}
+							</div>
+							<div
+								className="Next-Button"
+								// onClick={() =>
+								// 	setAudioIndex(
+								// 		(audioIndex + 1) % audios.length
+								// 	)
+								// }
+							>
+								<ForwardOutlined style={iconStyle} />
+							</div>
+						</div>
+					</Col>
+				</Row>
+				<Row>
+					<Col span={24}>
+						<TimeLineSong></TimeLineSong>
+					</Col>
+				</Row>
+				{/* <SwapOutlined style={iconStyle} />
+				<RetweetOutlined style={iconStyle} /> */}
 			</div>
 		);
 	}

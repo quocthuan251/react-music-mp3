@@ -7,7 +7,7 @@ import VolumnContainer from './VolumnContainer';
 import PlayListWraper from './PlayListWraper';
 import './style/MainContainerStyle.css';
 const style = {
-	background: '#B2B4AA',
+	// background: '#B2B4AA',
 	padding: '0px 0',
 	borderRadius: '10px 10px 10px 10px',
 };
@@ -38,23 +38,22 @@ class MainContainer extends React.Component {
 				>
 					<Col className="gutter-row" span={6}>
 						<div style={style}>
-							<MiniPlayer></MiniPlayer>
+							<PlayerDetail></PlayerDetail>
 						</div>
 					</Col>
-					<Col className="gutter-row" span={8}>
+					<Col className="gutter-row" span={10}>
 						<div style={style}>
-							<PlayerDetail></PlayerDetail>
+							<MiniPlayer></MiniPlayer>
 						</div>
 					</Col>
 					<Col
 						className="gutter-row"
-						span={5}
+						span={4}
 						style={{
 							display: 'flex',
 							justifyContent: 'center',
 							flexDirection: 'column',
 							paddingRight: 70,
-							background: '#B2B4AA',
 							borderRadius: '10px 10px 10px 10px',
 						}}
 					>
@@ -64,13 +63,12 @@ class MainContainer extends React.Component {
 					</Col>
 					<Col
 						className="gutter-row"
-						span={5}
+						span={4}
 						style={{
 							display: 'flex',
 							justifyContent: 'center',
 							flexDirection: 'column',
 							paddingRight: 70,
-							background: '#B2B4AA',
 							borderRadius: '10px 10px 10px 10px',
 						}}
 					>

@@ -1,0 +1,11 @@
+.audio-player {
+  background: url('https://media.altpress.com/uploads/2019/06/twenty-one-pilots-trench-003.jpg');
+  height: 10rem;
+  background-size: contain;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#play {
+  cursor: pointer;
+}

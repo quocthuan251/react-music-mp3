@@ -19,7 +19,7 @@ class Content extends React.Component {
 				<div>
 					<Divider
 						orientation="left"
-						style={{ borderTopColor: 'black' }}
+						style={{ borderTopColor: 'white' }}
 					>
 						<p className="textTitle">Âm nhạc dành cho bạn</p>
 					</Divider>
@@ -28,7 +28,7 @@ class Content extends React.Component {
 				<div>
 					<Divider
 						orientation="left"
-						style={{ borderTopColor: 'black' }}
+						style={{ borderTopColor: 'white' }}
 					>
 						<p className="textTitle">Playlist nghe gần đây</p>
 					</Divider>
@@ -37,7 +37,7 @@ class Content extends React.Component {
 				<div>
 					<Divider
 						orientation="left"
-						style={{ borderTopColor: 'black' }}
+						style={{ borderTopColor: 'white' }}
 					>
 						<p className="textTitle">Mix Riêng cho bạn</p>
 					</Divider>

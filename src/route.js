@@ -36,7 +36,7 @@ const route = [
 	{
 		path: '/singer',
 		exact: true,
-		auth: true,
+		auth: false,
 		layout: MainLayout,
 		main: (props) => <SingerDeatil router={props} />,
 	},

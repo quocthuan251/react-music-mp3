@@ -16,6 +16,14 @@ const style = { background: '#0092ff', padding: '0px 0' };
 const testLog = () => {
 	console.log('kkkkkkkkk');
 };
+const dataCard = [1, 2, 3, 4, 5, 6];
+
+const result = [];
+var x;
+for (x of dataCard) {
+	result.push(<CardSong></CardSong>);
+}
+
 function CardSong(props) {
 	return (
 		<Col className="gutter-row" span={4}>
@@ -70,11 +78,22 @@ class Recommend extends React.Component {
 	render() {
 		// const datatest = this.props.result.song.items.slice(1, 2);
 		return (
-			<>
-				<Button onClick={this.test22}>test2</Button>
-				{/* <p>{this.state.data}</p> */}
-				<CardSong></CardSong>
-			</>
+			<div>
+				{/* <Button onClick={this.test22}>test2</Button> */}
+				{/* <CardSong></CardSong> */}
+				<Row gutter={16}>
+					{result}
+					{/* <Col className="gutter-row" span={6}>
+						<div style={style}>col-6</div>
+					</Col>
+					<Col className="gutter-row" span={6}>
+						<div style={style}>col-6</div>
+					</Col>
+					<Col className="gutter-row" span={6}>
+						<div style={style}>col-6</div>
+					</Col> */}
+				</Row>
+			</div>
 		);
 	}
 }

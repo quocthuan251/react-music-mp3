@@ -7,6 +7,7 @@ import {
 	VideoCameraOutlined,
 	EllipsisOutlined,
 } from '@ant-design/icons';
+import './style/VolumeStyle.css';
 const style = { padding: '0px 0' };
 const style2 = {
 	display: 'inline-block',
@@ -18,7 +19,7 @@ const content = (
 		<Slider vertical defaultValue={30} />
 	</div>
 );
-class VolumnContainer extends React.Component {
+class VolumeContainer extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -31,54 +32,48 @@ class VolumnContainer extends React.Component {
 	render() {
 		return (
 			<div>
-				<Row
-					gutter={{ xs: 0, sm: 0, md: 0, lg: 5 }}
-					// style={{ textAlign: 'center' }}
-				>
-					<Col className="gutter-row" span={6}>
-						<Popover content={content}>
-							<Button
-								type="primary"
-								icon={<SoundOutlined />}
-							></Button>
-						</Popover>
-					</Col>
-					<Col className="gutter-row" span={6}>
-						<div style={style}>
+				<Row>
+					<div className="volumeGroup">
+						<div className="extraControls">
+							<Popover content={content}>
+								<Button
+									shape="circle"
+									icon={<SoundOutlined />}
+									style={{ backgroundColor: '#b3b3b3' }}
+								></Button>
+							</Popover>
+						</div>
+						<div className="extraControls">
 							<Tooltip title="search">
 								<Button
-									type="primary"
 									shape="circle"
 									icon={<AudioFilled />}
+									style={{ backgroundColor: '#b3b3b3' }}
 								/>
 							</Tooltip>
 						</div>
-					</Col>
-					<Col className="gutter-row" span={6}>
-						<div style={style}>
+						<div className="extraControls">
 							<Tooltip title="Xem video">
 								<Button
-									type="primary"
 									shape="circle"
 									icon={<VideoCameraOutlined />}
+									style={{ backgroundColor: '#b3b3b3' }}
 								/>
 							</Tooltip>
 						</div>
-					</Col>
-					<Col className="gutter-row" span={6}>
-						<div style={style}>
+						<div className="extraControls">
 							<Tooltip title="Xem thêm">
 								<Button
-									type="primary"
 									shape="circle"
 									icon={<EllipsisOutlined />}
+									style={{ backgroundColor: '#b3b3b3' }}
 								/>
 							</Tooltip>
 						</div>
-					</Col>
+					</div>
 				</Row>
 			</div>
 		);
 	}
 }
-export default VolumnContainer;
+export default VolumeContainer;

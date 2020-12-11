@@ -10,6 +10,7 @@ import {
 	SwapOutlined,
 } from '@ant-design/icons';
 import TimeLineSong from './TimeLineSong';
+import Timer from './Timer';
 import './style/MiniPlayerStyle.css';
 const iconStyle = {
 	fontSize: '20px',
@@ -19,6 +20,7 @@ class MiniPlayer extends React.Component {
 		super(props);
 		this.state = {
 			isPlay: false,
+			timeEnd: '03:10',
 		};
 		this.handlePausePlayClick = this.handlePausePlayClick.bind(this);
 	}
@@ -29,7 +31,7 @@ class MiniPlayer extends React.Component {
 	}
 	render() {
 		return (
-			<div>
+			<div style={{ color: 'white' }}>
 				<Row>
 					<Col span={24}>
 						<div
@@ -52,26 +54,24 @@ class MiniPlayer extends React.Component {
 									<PlayCircleOutlined style={iconStyle} />
 								)}
 							</div>
-							<div
-								className="Next-Button"
-								// onClick={() =>
-								// 	setAudioIndex(
-								// 		(audioIndex + 1) % audios.length
-								// 	)
-								// }
-							>
+							<div className="Next-Button">
 								<ForwardOutlined style={iconStyle} />
+							</div>
+							<div className="retweet-Button">
+								<SwapOutlined style={iconStyle} />
 							</div>
 						</div>
 					</Col>
 				</Row>
 				<Row>
-					<Col span={24}>
+					<Col span={3}>
+						<Timer></Timer>
+					</Col>
+					<Col span={18}>
 						<TimeLineSong></TimeLineSong>
 					</Col>
+					<Col span={3}>{this.state.timeEnd}</Col>
 				</Row>
-				{/* <SwapOutlined style={iconStyle} />
-				<RetweetOutlined style={iconStyle} /> */}
 			</div>
 		);
 	}

@@ -3,7 +3,7 @@ import TimeSlider from 'react-input-slider';
 import { Row, Col, Divider } from 'antd';
 import MiniPlayer from './MiniPlayer';
 import PlayerDetail from './PlayerDetail';
-import VolumnContainer from './VolumnContainer';
+import VolumeContainer from './VolumeContainer';
 import PlayListWraper from './PlayListWraper';
 import './style/MainContainerStyle.css';
 const style = {
@@ -47,18 +47,18 @@ class MainContainer extends React.Component {
 						</div>
 					</Col>
 					<Col
-						className="gutter-row"
+						className="mini-control-box"
 						span={4}
-						style={{
-							display: 'flex',
-							justifyContent: 'center',
-							flexDirection: 'column',
-							paddingRight: 70,
-							borderRadius: '10px 10px 10px 10px',
-						}}
+						// style={{
+						// 	display: 'flex',
+						// 	justifyContent: 'center',
+						// 	flexDirection: 'column',
+						// 	paddingRight: 70,
+						// 	borderRadius: '10px 10px 10px 10px',
+						// }}
 					>
 						<div>
-							<VolumnContainer></VolumnContainer>
+							<VolumeContainer></VolumeContainer>
 						</div>
 					</Col>
 					<Col

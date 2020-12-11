@@ -2,7 +2,7 @@ import React from 'react';
 import TimeSlider from 'react-input-slider';
 import { Button, Drawer } from 'antd';
 import { MenuUnfoldOutlined } from '@ant-design/icons';
-
+import './style/PlayListWraperStyle.css';
 class PlayListWraper extends React.Component {
 	constructor(props) {
 		super(props);
@@ -25,9 +25,9 @@ class PlayListWraper extends React.Component {
 		return (
 			<div>
 				<Button
-					type="primary"
 					onClick={this.showDrawer}
 					icon={<MenuUnfoldOutlined />}
+					style={{ backgroundColor: '#282828', color: 'gray' }}
 				>
 					Danh sách phát (56)
 				</Button>
@@ -37,10 +37,15 @@ class PlayListWraper extends React.Component {
 					closable={false}
 					onClose={this.onClose}
 					visible={this.state.visible}
+					className="drawer-right"
+					bodyStyle={{ backgroundColor: '#1C151B' }}
+					headerStyle={{}}
 				>
-					<p>Lemon tree...</p>
-					<p>Từ khi gặp lại...</p>
-					<p>Trịnh Công Sơn...</p>
+					<div className="drawer-right-text">
+						<p>Lemon tree...</p>
+						<p>Từ khi gặp lại...</p>
+						<p>Trịnh Công Sơn...</p>
+					</div>
 				</Drawer>
 			</div>
 		);

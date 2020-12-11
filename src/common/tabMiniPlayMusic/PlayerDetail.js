@@ -44,42 +44,14 @@ class PlayerDetail extends React.Component {
 					<Col span={6}>
 						<Image
 							className="image-song"
-							src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+							src="https://i.scdn.co/image/ab67616d000048518bab2a8ce2c392fac6e14739"
 						/>
 					</Col>
 					<Col span={18}>
-						<Row style={{}}>
-							<Col span={18} className="miniNameSong">
-								<marquee
-									width="90%"
-									behavior="scroll"
-									scrollamount="4"
-								>
-									Đứng trước bờ vực loài người sẽ thay đổi -
-									Trần Quốc Thuận
-								</marquee>
-							</Col>
-							<Col span={6} className="countdown">
-								<Row>
-									<Col span={12}>
-										<Timer></Timer>
-									</Col>
-									<Col
-										span={12}
-										style={{
-											fontSize: 12,
-											fontWeight: 600,
-											opacity: 0.5,
-										}}
-									>
-										<p>/03:31</p>
-									</Col>
-								</Row>
-							</Col>
-						</Row>
-						<Row>
-							<TimeLineSong></TimeLineSong>
-						</Row>
+						<div className="miniDetailSongBox">
+							<div className="miniNameSong">Stay Alive</div>
+							<div className="miniAuthorSong">Quốc Thuận</div>
+						</div>
 					</Col>
 				</Row>
 			</div>

@@ -1,5 +1,15 @@
 .main-container-mini {
 	padding: 2vh 9vh 2vh 9vh;
 }
+.mini-control-box {
+	display: 'flex';
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+	margin: auto;
+}
+/* .mini-button-color-global {
+	background-color: red;
+} */
 /* 
  */

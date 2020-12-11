@@ -27,4 +27,4 @@
 // 	};
 // };
 
-// export default connect(mapStateToProps, mapDispatchToProps)(CategoryContainer);
+// export default connect(mapStateToProps, mapDispatchToProps)(Recommend);

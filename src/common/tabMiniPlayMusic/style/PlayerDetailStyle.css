@@ -5,18 +5,25 @@
 	width: 9vh;
 	border-radius: 50em;
 }
-.countdown {
-	/* font-size: small;
-	color: violet; */
-	/* background-color: tomato; */
+
+
+.miniDetailSongBox {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0 14px;
+	margin-top: 5px;
 }
-/* .timer {
-	font-size: 125;
-	font-weight: 600;
-	opacity: 0.5;
-} */
 .miniNameSong {
 	font-size: 18;
 	font-weight: 900;
 	/* opacity: 0.5; */
+	text-align: left;
+}
+.miniAuthorSong {
+	font-size: 12px;
+	line-height: 16px;
+	letter-spacing: 0.015em;
+	text-align: left;
+	color: #b3b3b3;
 }

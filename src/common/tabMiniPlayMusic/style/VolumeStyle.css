@@ -1,0 +1,11 @@
+.volumeGroup {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+  color: white;
+  margin: auto;
+}
+.extraControls {
+	margin: 0 4px;
+}

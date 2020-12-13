@@ -10,14 +10,22 @@ export class NavigationPage extends Component {
 				<div>
 					<Space split={<Divider type="vertical" />}>
 						<Button type="link">
-							<a href="/top-new"> MP3 CHART </a>
+							<Link to="/top-new" style={{ color: 'white' }}>
+								MP3 CHART
+							</Link>
 						</Button>
 						<Button type="link">
-							<a href="/new-release">MỚI PHÁT HÀNH</a>
+							<Link to="/new-release" style={{ color: 'white' }}>
+								MỚI PHÁT HÀNH
+							</Link>
 						</Button>
-						<Button type="link">TOP 100</Button>
+						<Button type="link" style={{ color: 'white' }}>
+							TOP 100
+						</Button>
 						<Button type="link">
-							<a href="/singer">NGHỆ SĨ</a>
+							<Link to="/singer" style={{ color: 'white' }}>
+								NGHỆ SĨ
+							</Link>
 						</Button>
 					</Space>
 				</div>

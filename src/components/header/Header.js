@@ -6,7 +6,7 @@ import NavigationPage from './navigation/NavigationPage';
 import SearchInput from './searchBar/SearchInput';
 import { Row, Col } from 'antd';
 import './HeaderStyle.css';
-
+import { Link } from 'react-router-dom';
 export class Header extends Component {
 	state = {
 		pageIndex: 0,
@@ -17,14 +17,21 @@ export class Header extends Component {
 			<>
 				<Row style={{}}>
 					<Col span={4} style={{}}>
-						<Row>
-							<Col span={6}>
-								<Avatar size={40} src={<Image src={logo} />} />
-							</Col>
-							<Col span={18}>
-								<h3 style={{ color: 'white' }}>Music cloud</h3>
-							</Col>
-						</Row>
+						<Link to="/">
+							<Row>
+								<Col span={6}>
+									<Avatar
+										size={40}
+										src={<Image src={logo} />}
+									/>
+								</Col>
+								<Col span={18}>
+									<h3 style={{ color: 'white' }}>
+										Music cloud
+									</h3>
+								</Col>
+							</Row>
+						</Link>
 					</Col>
 					<Col span={11}>
 						<NavigationPage></NavigationPage>

@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import { Menu, Button, Popover } from 'antd';
+import { Menu, Button, Popover, Dropdown } from 'antd';
 import avatarDefault from '../../../images/vinile.png';
 import './Style.css';
 import { message } from 'antd';
-import { BellOutlined, UserOutlined, LogoutOutlined } from '@ant-design/icons';
+import {
+	BellOutlined,
+	UserOutlined,
+	LogoutOutlined,
+	DownOutlined,
+} from '@ant-design/icons';
 import Signin from '../../../pages/signin/Signin';
 
 function handleMenuClick(e) {
@@ -11,7 +16,7 @@ function handleMenuClick(e) {
 	console.log('click', e);
 }
 const content = (
-	<div>
+	<div className="avatar-group-button-user">
 		<img
 			src={avatarDefault}
 			alt="my image"
@@ -44,49 +49,48 @@ const content = (
 		</Button>
 	</div>
 );
-const notifi = (
-	<div>
-		<p>các thông báo ở đây</p>
+
+const menu = (
+	<div className="avatar-group-notifi-detail">
+		<Menu>
+			<Menu.Item key="0">
+				<div>Sơn Tùng MTP</div>
+			</Menu.Item>
+			<Menu.Item key="1">
+				<div>Mr Siro vừa ra bài hát mới</div>
+			</Menu.Item>
+		</Menu>
 	</div>
 );
-
 export class AvatarGroup extends Component {
-	
 	render() {
 		return (
-			<>
-				<div
-					style={{
-						float: 'right',
-					}}
-				>
-					<Popover
-						content={notifi}
-						title="Thông báo"
-						trigger="click"
-						className="ring"
-					>
-						<Button
-							shape="circle"
-							icon={<BellOutlined />}
-							size={'large'}
-						/>
-					</Popover>
-					<Popover content={content} trigger="click">
-						<img
-							src={avatarDefault}
-							alt="my image"
-							style={{
-								width: 40,
-								height: 40,
-								cursor: 'pointer',
-								marginBottom: 5,
-							}}
-						/>
-					</Popover>
-					{/* <Signin></Signin> */}
-				</div>
-			</>
+			<div
+				style={{
+					float: 'right',
+				}}
+			>
+				<Dropdown overlay={menu} trigger={['click']}>
+					<Button
+						shape="circle"
+						icon={<BellOutlined />}
+						size={'large'}
+					/>
+				</Dropdown>
+
+				<Popover content={content} trigger="click">
+					<img
+						src={avatarDefault}
+						alt="my image"
+						style={{
+							width: 40,
+							height: 40,
+							cursor: 'pointer',
+							marginBottom: 5,
+						}}
+					/>
+				</Popover>
+			</div>
 		);
 	}
 }

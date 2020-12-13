@@ -1,0 +1,41 @@
+/* .box-title-name-song {
+	margin-left: 5px;
+}
+.scroll-customize {
+	overflow-y: scroll;
+}
+.scroll-customize::-webkit-scrollbar {
+	display: none;
+} */
+.play-list-song-detail-box {
+	cursor: pointer;
+}
+.play-list-button-delete {
+	cursor: pointer;
+}
+.play-list-image-song {
+	width: 100%;
+	border-radius: 50%;
+	margin-top: 5px;
+}
+
+.play-list-miniDetailSongBox {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0 14px;
+	/* margin-top: 5px; */
+}
+.play-list-miniNameSong {
+	font-size: 11;
+	font-weight: 600;
+	/* opacity: 0.5; */
+	text-align: left;
+}
+.play-list-miniAuthorSong {
+	font-size: 10px;
+	line-height: 16px;
+	letter-spacing: 0.015em;
+	text-align: left;
+	color: #b3b3b3;
+}

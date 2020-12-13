@@ -3,6 +3,7 @@ import TimeSlider from 'react-input-slider';
 import { Button, Drawer } from 'antd';
 import { MenuUnfoldOutlined } from '@ant-design/icons';
 import './style/PlayListWraperStyle.css';
+import PlayListContentBox from './PlayListContentBox';
 class PlayListWraper extends React.Component {
 	constructor(props) {
 		super(props);
@@ -42,9 +43,7 @@ class PlayListWraper extends React.Component {
 					headerStyle={{}}
 				>
 					<div className="drawer-right-text">
-						<p>Lemon tree...</p>
-						<p>Từ khi gặp lại...</p>
-						<p>Trịnh Công Sơn...</p>
+						<PlayListContentBox></PlayListContentBox>
 					</div>
 				</Drawer>
 			</div>

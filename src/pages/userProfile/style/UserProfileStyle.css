@@ -1,0 +1,52 @@
+.ant-descriptions-item-label {
+	color: white;
+}
+.ant-descriptions-item-content {
+	color: white;
+}
+.ant-tabs-tab-btn {
+	color: white;
+}
+.user-profile-tab-pane-content {
+	/* display: flex;
+	justify-content: center;
+	justify-items: center;
+	flex-direction: row; */
+}
+.ant-tabs-content-holder {
+	margin: auto;
+}
+.user-profile-image-song {
+	float: right;
+}
+.user-profile-button-control {
+	margin: 8px 5px;
+	padding: 3px;
+}
+.user-profile-play-list-group {
+	margin-bottom: 10px;
+}
+.user-profile-play-list-group:hover {
+	background: black;
+	border-radius: 10px;
+}
+.user-profile-title {
+	font-size: large;
+	font-weight: bolder;
+	margin: 20px 10px 50px 10px;
+}
+.user-profile-user-name {
+	margin-top: 10px;
+	font-weight: 800;
+}
+.user-profile-user-image {
+	width: 100px;
+	height: 100px;
+	border-radius: 15%;
+}
+.user-profile-button-control-style {
+	color: white;
+}
+.user-profile-button-control-style:hover {
+	color: brown;
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Menu, Button, Popover, Dropdown } from 'antd';
+import { Link } from 'react-router-dom';
 import avatarDefault from '../../../images/vinile.png';
 import './Style.css';
 import { message } from 'antd';
@@ -17,15 +18,19 @@ function handleMenuClick(e) {
 }
 const content = (
 	<div className="avatar-group-button-user">
-		<img
-			src={avatarDefault}
-			alt="my image"
-			style={{
-				width: 40,
-				cursor: 'pointer',
-			}}
-		/>
-		<p>Trần Quốc Thuận</p>
+		<Link to="/profile">
+			<div>
+				<img
+					src={avatarDefault}
+					alt="my image"
+					style={{
+						width: 40,
+						cursor: 'pointer',
+					}}
+				/>
+				<p>Trần Quốc Thuận</p>
+			</div>
+		</Link>
 		<hr />
 		<Menu onClick={handleMenuClick}>
 			<Menu.Item key="1" icon={<UserOutlined />}>

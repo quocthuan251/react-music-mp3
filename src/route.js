@@ -11,6 +11,7 @@ const Artist = lazy(() => import('./components/singer/Artist'));
 const SignupPage = lazy(() => import('./pages/signup/signup'));
 const Error404 = lazy(() => import('./common/errorPage/Error404'));
 const Test = lazy(() => import('./components/home/category/TestMusicPlayer'));
+const UserProfile = lazy(() => import('./pages/userProfile/UserProfile'));
 const route = [
 	{
 		path: '/',
@@ -81,6 +82,13 @@ const route = [
 		auth: false,
 		layout: LoginLayout,
 		main: (props) => <Error404 router={props} />,
+	},
+	{
+		path: '/profile',
+		exact: true,
+		auth: false,
+		layout: MainLayout,
+		main: (props) => <UserProfile router={props} />,
 	},
 	{
 		path: '/test',

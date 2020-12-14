@@ -54,33 +54,31 @@ function CardSong(props) {
 class Recommend extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			data: this.props.result,
-		};
+		this.state = {};
 	}
 	componentDidMount() {
-		this.props.getListSong();
+		// this.props.getListSong();
 		this.test3();
 	}
 	test22 = () => {
 		console.log('test state li');
-		const url = this.props.result.song.items[1];
-		// console.log(url.thumbnail_medium);
+		// const url = this.props.result.song.items[1];
+		console.log(this.props.dataListSong.song.items[1].alias);
+
 		// console.log(this.props.result.song.items.slice(1, 2));
 		// console.log(this.state.data);
 	};
 	test3 = () => {
-		const datatest = this.props.result;
-		console.log('test3');
-		console.log(datatest);
+		console.log('tesst avvvv');
 	};
 
 	render() {
 		// const datatest = this.props.result.song.items.slice(1, 2);
 		return (
 			<div>
-				{/* <Button onClick={this.test22}>test2</Button> */}
+				<Button onClick={this.test22}>test2</Button>
 				{/* <CardSong></CardSong> */}
+
 				<Row gutter={16}>
 					{result}
 					{/* <Col className="gutter-row" span={6}>
@@ -99,7 +97,7 @@ class Recommend extends React.Component {
 }
 const mapStateToProps = (state) => {
 	return {
-		result: getSongs(state).toJS(),
+		dataListSong: getSongs(state).toJS(),
 	};
 };
 const mapDispatchToProps = (dispatch, props) => {

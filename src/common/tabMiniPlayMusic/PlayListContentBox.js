@@ -6,7 +6,7 @@ import { DeleteOutlined } from '@ant-design/icons';
 import { Tag } from 'antd';
 // import reqwest from 'reqwest';
 import './style/PlayListContentBoxStyle.css';
-import InfiniteScroll from 'react-infinite-scroller';
+// import InfiniteScroll from 'react-infinite-scroller';
 
 class PlayListContentBox extends React.Component {
 	constructor(props) {

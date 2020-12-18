@@ -89,6 +89,7 @@ export class Artist extends React.Component {
 	};
 	constructor(props) {
 		super(props);
+		this.props.getArtistTest();
 		console.log('artist');
 		this.state = { item: props.router.location.aboutProps.item };
 		// this.setState((state) => ({
@@ -96,7 +97,14 @@ export class Artist extends React.Component {
 		// }));
 		console.log(this.state.item);
 	}
-	componentWillMount = () => {};
+	// componentDidMount = () => {
+	// 	this.props.getArtistTest();
+	// };
+	// static getDerivedStateFromProps(nextProps, prevState) {
+	// 	if (nextProps.getArtistTest() !== prevState.getArtistTest()) {
+	// 		return { someState: nextProps.someValue };
+	// 	} else return null;
+	// }
 	test = () => {
 		console.log('test redux in class artist');
 		this.props.getArtistTest();
@@ -279,6 +287,7 @@ export class Artist extends React.Component {
 				</div>
 				<Button onClick={this.test}>test redux</Button>
 				<Button onClick={this.test2}>test2 redux</Button>
+				{/* <div>{this.props.artists.song.items[1].title}</div> */}
 			</>
 		);
 	}

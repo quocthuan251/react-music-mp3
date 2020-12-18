@@ -6,7 +6,7 @@ import {
 	CaretRightOutlined,
 	HeartOutlined,
 } from '@ant-design/icons';
-import { actions as homeActions, getSongs } from '../reducer';
+import { actions as homeActions } from '../reducer';
 import { connect } from 'react-redux';
 // import TestRedux from './TestRedux';
 
@@ -54,61 +54,21 @@ function CardSong(props) {
 class Recommend extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {};
+		this.state = {
+			data: {},
+		};
 	}
-	componentDidMount() {
-		// this.props.getListSong();
-		this.test3();
-	}
-	test22 = () => {
-		console.log('test state li');
-		// const url = this.props.result.song.items[1];
-		console.log(this.props.dataListSong.song.items[1].alias);
-
-		// console.log(this.props.result.song.items.slice(1, 2));
-		// console.log(this.state.data);
-	};
-	test3 = () => {
-		console.log('tesst avvvv');
-	};
+	componentDidMount() {}
 
 	render() {
-		// const datatest = this.props.result.song.items.slice(1, 2);
 		return (
 			<div>
-				<Button onClick={this.test22}>test2</Button>
-				{/* <CardSong></CardSong> */}
-
-				<Row gutter={16}>
-					{result}
-					{/* <Col className="gutter-row" span={6}>
-						<div style={style}>col-6</div>
-					</Col>
-					<Col className="gutter-row" span={6}>
-						<div style={style}>col-6</div>
-					</Col>
-					<Col className="gutter-row" span={6}>
-						<div style={style}>col-6</div>
-					</Col> */}
-				</Row>
+				<Row gutter={16}>{result}</Row>
 			</div>
 		);
 	}
 }
-const mapStateToProps = (state) => {
-	return {
-		dataListSong: getSongs(state).toJS(),
-	};
-};
-const mapDispatchToProps = (dispatch, props) => {
-	return {
-		getListSong: () => {
-			dispatch(homeActions.getList());
-		},
-		getListSongTest: () => {
-			dispatch(homeActions.getListTest());
-		},
-	};
-};
+const mapStateToProps = (state) => {};
+const mapDispatchToProps = (dispatch, props) => {};
 Recommend = connect(mapStateToProps, mapDispatchToProps)(Recommend);
 export default Recommend;

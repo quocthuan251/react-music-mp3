@@ -11,24 +11,9 @@ import { Provider } from 'react-redux';
 import { logger } from 'redux-logger';
 import reducer from './reducers';
 import rootSaga from './sagas';
-// import { composeWithDevTools } from 'redux-devtools-extension';
-
-const composeEnhancers =
-	process.env.NODE_ENV !== 'production' &&
-	typeof window === 'object' &&
-	window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-		? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-				shouldHotReload: false,
-		  })
-		: compose;
-
-const sagaMiddleware = createSagaMiddleware();
-const middlewares = [sagaMiddleware];
-const enhancers = [applyMiddleware(...middlewares, logger)];
-
-const store = createStore(reducer, composeEnhancers(...enhancers));
-sagaMiddleware.run(rootSaga);
-
+import configureStore from './store/index';
+const initialState = {};
+const { store } = configureStore(initialState);
 ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>

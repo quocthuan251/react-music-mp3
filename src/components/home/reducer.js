@@ -42,23 +42,35 @@ export const initialState = fromJS({
 });
 export default function song(state = initialState, action) {
 	switch (action.type) {
+		// 	case HOME_GET_lIST_SONG:
+		// 		return state.set('isLoading', true);
+
+		// 	case HOME_GET_lIST_SONG_SUCCESS: {
+		// 		const { payload } = action;
+		// 		return state
+		// 			.set('listSong', fromJS(payload))
+		// 			.set('isLoading', false);
+		// 	}
+		// 	case HOME_GET_lIST_SONG_FAIL:
+		// 		return state
+		// 			.set('errorMessage', action.errorMessage)
+		// 			.set('isLoading', false);
+		// 	default:
+		// 		return state;
+		// }
 		case HOME_GET_lIST_SONG:
-			return state.set('isLoading', true);
+			return { ...state, isLoading: true };
 
 		case HOME_GET_lIST_SONG_SUCCESS: {
 			const { payload } = action;
-			return state
-				.set('listSong', fromJS(payload))
-				.set('isLoading', false);
+			return { ...state, listSong: fromJS(payload), isLoading: false };
 		}
 		case HOME_GET_lIST_SONG_FAIL:
-			return state
-				.set('errorMessage', action.errorMessage)
-				.set('isLoading', false);
+			return { ...state, errorMessage: action.errorMessage };
 		default:
 			return state;
 	}
 }
 
 // 5. Functions to map state to props
-export const getSongs = ({ song }) => song.get('listSong', emptyList);
+// export const getSongs = ({ song }) => song.get('listSong', emptyList);

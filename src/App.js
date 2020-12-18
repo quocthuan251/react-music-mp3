@@ -7,14 +7,7 @@ import {
 	BrowserRouter as Router,
 } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import SigninPage from './pages/signin/Signin';
-import SignupPage from './pages/signup/signup';
-import { MainLayout, LoginLayout } from './common/layout/Layout';
-import UserPage from './pages/UserPage';
 import SongDetail from './pages/SongDetail';
-import HeaderLayout from './components/header/Header';
-import MiniPlayerControls from './common/tabMiniPlayMusic/MainContainer';
-// import HashLoader from 'react-spinners/HashLoader';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { Spin } from 'antd';
 import routes from './route';

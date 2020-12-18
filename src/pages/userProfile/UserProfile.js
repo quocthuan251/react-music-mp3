@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { Descriptions, Image, Tabs, Avatar, Button, Tooltip } from 'antd';
 import { Row, Col } from 'antd';
 import {
@@ -8,6 +9,8 @@ import {
 } from '@ant-design/icons';
 import './style/UserProfileStyle.css';
 import UserPlayList from './UserPlayList';
+import { connect } from 'react-redux';
+import { getUserDetail } from './actions';
 const { TabPane } = Tabs;
 
 function ImageDemo() {
@@ -60,10 +63,17 @@ function ImageDemo() {
 	);
 }
 class UserProfile extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {};
+	// constructor(props) {
+	// 	super(props);
+	// 	this.state = {};
+	// }
+	componentDidMount() {
+		this.props.getUserDetail();
 	}
+	handClickfetchData = () => {
+		console.log('hello iam thuan');
+		console.log(this.props.data.name);
+	};
 	render() {
 		return (
 			<div>
@@ -107,6 +117,10 @@ class UserProfile extends React.Component {
 						key="1"
 						className="user-profile-tab-pane-content"
 					>
+						<Button onClick={this.handClickfetchData}>
+							call data
+						</Button>
+						<div>{this.props.data.name}</div>
 						<ImageDemo></ImageDemo>
 						<ImageDemo></ImageDemo>
 						<ImageDemo></ImageDemo>
@@ -127,4 +141,12 @@ class UserProfile extends React.Component {
 		);
 	}
 }
-export default UserProfile;
+const mapStateToProps = (state) => ({
+	data: state.reducerUser.data,
+	loading: state.reducerUser.loading,
+	error: state.reducerUser.error,
+});
+const mapDispatchToProps = {
+	getUserDetail,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);

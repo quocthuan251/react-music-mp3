@@ -1,67 +1,41 @@
-import { fromJS } from 'immutable'
+import {
+	GET_LIST_RECOMMEND,
+	GET_LIST_RECOMMEND_SUCCESS,
+	GET_LIST_RECOMMEND_FAIL,
+	GET_LIST_MIX,
+	GET_LIST_MIX_SUCCESS,
+	GET_LIST_MIX_FAIL,
+} from './actions';
+const initialState = {
+	data: [],
+	loading: false,
+	error: '',
+	listMix: [],
+};
 
-// 1. Define const for reducer
-export const USER_GET_DATA = 'User/action/GET_LIST'
-export const USER_GET_DATA_SUCCESS = 'User/action/GET_LIST_SUCCESS'
-export const USER_GET_DATA_FAIL = 'User/action/GET_LIST_FAIL'
-
-
-// 2. Define function for reducer
-const getList = () => {
-  return {
-    type: USER_GET_DATA,
-  }
-}
-const getListSuccess = payload => {
-  return {
-    type: USER_GET_DATA_SUCCESS,
-    payload,
-  }
-}
-
-const getListFail = errorMessage => {
-  return {
-    type: USER_GET_DATA_FAIL,
-    errorMessage,
-  }
-}
-
-
-
-// 3. Export actions
-export const actions = {
-  getList,
-  getListSuccess,
-  getListFail,
-  
-}
-
-// 4. Export state & function for setting states
-const emptyList = fromJS([])
-// const emptyObject = fromJS({})
-
-export const initialState = fromJS({
-  isLoadingUserList: false,
-  users: emptyList,
-  errorMessage: '',
-})
-
-export default function user(state = initialState, action) {
-  switch (action.type) {
-    case USER_GET_DATA:
-      return state.set('isLoading', true)
-
-    case USER_GET_DATA_SUCCESS: {
-      const { payload } = action
-      return state.set('users', fromJS(payload)).set('isLoading', false)
-    }
-    case USER_GET_DATA_FAIL:
-      return state.set('errorMessage', action.errorMessage).set('isLoading', false)
-
-    default:
-      return state
-  }
-}
-
-// 5. Functions to map state to props
-export const getUsers = ({ user }) => user.get('users', emptyList)
+const reducerHome = (state = initialState, action) => {
+	switch (action.type) {
+		case GET_LIST_RECOMMEND: {
+			return { ...state, loading: true, error: '' };
+		}
+		case GET_LIST_RECOMMEND_SUCCESS: {
+			return { ...state, data: action.data, loading: false };
+		}
+		case GET_LIST_RECOMMEND_FAIL: {
+			return { ...state, loading: false, error: action.error };
+		}
+		//call list mix
+		case GET_LIST_MIX: {
+			return { ...state, loading: true, error: '' };
+		}
+		case GET_LIST_MIX_SUCCESS: {
+			return { ...state, listMix: action.data, loading: false };
+		}
+		case GET_LIST_MIX_FAIL: {
+			return { ...state, loading: false, error: action.error };
+		}
+		default:
+			return state;
+	}
+};
+export default reducerHome;

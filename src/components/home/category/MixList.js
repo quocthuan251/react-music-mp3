@@ -1,19 +1,20 @@
 import React from 'react';
 import { List } from 'antd';
 import { connect } from 'react-redux';
-import { getListRecomendSong } from '../../../pages/home/actions';
+import { getListMix } from '../../../pages/home/actions';
 import SongItem from './SongItem';
 
-class Recommend extends React.Component {
+class MixListSong extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {};
 	}
 	componentDidMount() {
-		this.props.getListRecomendSong();
+		this.props.getListMix();
 	}
 	// test1 = () => {
 	// 	const datatest = this.props.data.items;
+	// 	// console.log(datatest);
 	// 	const resulttest = [];
 	// 	var x;
 	// 	for (x of datatest) {
@@ -21,7 +22,7 @@ class Recommend extends React.Component {
 	// 			id: x.id,
 	// 			title: x.title,
 	// 			download_permit: true,
-	// 			genre: 'nhạc trẻ',
+	// 			genre: 'nhạc rock',
 	// 			path: 'https://www.youtube.com/watch?v=bweXYSOMCkk',
 	// 			image: x.thumbnail_medium,
 	// 			album_id: x.raw_id,
@@ -30,11 +31,12 @@ class Recommend extends React.Component {
 	// 		resulttest.push(obj);
 	// 	}
 	// 	console.log('haha');
-	// 	localStorage.setItem('myValueInLocalStorage', resulttest);
+	// 	// localStorage.setItem('myValueInLocalStorage', resulttest);
 	// 	console.log(resulttest);
 	// };
+
 	render() {
-		const list = this.props.data.item ?? [];
+		const list = this.props.data.items ?? [];
 		return (
 			<div>
 				<List
@@ -51,11 +53,11 @@ class Recommend extends React.Component {
 	}
 }
 const mapStateToProps = (state) => ({
-	data: state.reducerHome.data,
+	data: state.reducerHome.listMix,
 	loading: state.reducerHome.loading,
 	error: state.reducerHome.error,
 });
 const mapDispatchToProps = {
-	getListRecomendSong,
+	getListMix,
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Recommend);
+export default connect(mapStateToProps, mapDispatchToProps)(MixListSong);

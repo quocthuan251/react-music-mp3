@@ -1,7 +1,6 @@
 import React from 'react';
 import AudioPlayer from 'react-modular-audio-player';
 import './style/TestStyle.css';
-import NgayXuanLongPhungSumVay from './NgayXuanLongPhungSumVay.mp3';
 const rearrangedPlayer = [
 	{
 		className: 'adele',
@@ -39,7 +38,6 @@ class TestMusicPlayer extends React.Component {
 					playerWidth="10rem"
 					iconSize="9rem"
 				/>
-        
 			</div>
 		);
 	}

@@ -6,13 +6,9 @@ import {
 	Redirect,
 	BrowserRouter as Router,
 } from 'react-router-dom';
-import HomePage from './pages/HomePage';
 import SongDetail from './pages/SongDetail';
-import { Layout, Menu, Breadcrumb } from 'antd';
 import { Spin } from 'antd';
 import routes from './route';
-
-const { Header, Content, Footer } = Layout;
 
 const WaitingComponent = (Component) => (props) => (
 	<Suspense fallback={<Spin spinning={true} tip="Loading..." />}>

@@ -1,13 +1,9 @@
 import React from 'react';
-import { Row, Col, Divider } from 'antd';
+import { Divider } from 'antd';
 import './HomeStyle.css';
-import { Card, Avatar } from 'antd';
 import RecommnendList from './category/Recommend';
-import { actions as homeActions, getSongs } from './reducer';
-import { connect } from 'react-redux';
+import MixList from './category/MixList';
 
-const { Meta } = Card;
-const style = { background: '#0092ff', padding: '0px 0' };
 class Content extends React.Component {
 	constructor(props) {
 		super(props);
@@ -15,9 +11,7 @@ class Content extends React.Component {
 			x: 'This is x from state',
 		};
 	}
-	componentDidMount() {
-		this.props.getListSong();
-	}
+	componentDidMount() {}
 	render() {
 		return (
 			<>
@@ -37,7 +31,7 @@ class Content extends React.Component {
 					>
 						<p className="textTitle">Playlist nghe gần đây</p>
 					</Divider>
-					{/* <RecommnendList></RecommnendList> */}
+					<MixList></MixList>
 				</div>
 				<div>
 					<Divider
@@ -46,18 +40,11 @@ class Content extends React.Component {
 					>
 						<p className="textTitle">Mix Riêng cho bạn</p>
 					</Divider>
-					{/* <RecommnendList></RecommnendList> */}
+					<MixList></MixList>
 				</div>
 			</>
 		);
 	}
 }
-const mapDispatchToProps = (dispatch, props) => {
-	return {
-		getListSong: () => {
-			dispatch(homeActions.getList());
-		},
-	};
-};
-Content = connect(null, mapDispatchToProps)(Content);
+
 export default Content;

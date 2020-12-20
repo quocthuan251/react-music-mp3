@@ -1,6 +1,6 @@
 import React, { lazy } from 'react';
 import { MainLayout, LoginLayout } from './common/layout/Layout';
-const HomePage = lazy(() => import('./pages/HomePage'));
+const HomePage = lazy(() => import('./pages/home/HomePage'));
 const SongDetailPage = lazy(() => import('./pages/SongDetail'));
 const LoginPage = lazy(() => import('./pages/signin/Signin'));
 const MusicChart = lazy(() => import('./pages/charts/MusicChart'));

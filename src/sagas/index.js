@@ -1,5 +1,5 @@
 import { put, takeLatest, all, call } from 'redux-saga/effects';
-import homeFlow from '../components/home/saga';
+import homeFlow from '../pages/home/saga';
 import artistFlow from '../components/singer/saga';
 import usersFlow from '../pages/userProfile/saga';
 export default function* rootSaga() {

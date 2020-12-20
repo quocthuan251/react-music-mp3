@@ -1,13 +1,6 @@
 import React from 'react';
 import { Carousel } from 'antd';
 
-const contentStyle = {
-	height: '200px',
-	color: '#fff',
-	lineHeight: '160px',
-	textAlign: 'center',
-	background: '#364d79',
-};
 const urlImg = [
 	'https://photo-zmp3.zadn.vn/banner/3/4/5/9/3459ecedcbfccdf942222d410ab0305e.jpg',
 	'https://photo-zmp3.zadn.vn/banner/1/2/e/8/12e8d932aa97e27494c6caec32eb7ee0.jpg',
@@ -20,7 +13,7 @@ const listBaner = urlImg.map((value, index) => {
 			<div>
 				<img
 					src={value}
-					alt="my image"
+					alt="baner header"
 					style={{
 						width: 1200,
 						cursor: 'pointer',
@@ -33,13 +26,7 @@ const listBaner = urlImg.map((value, index) => {
 export class Baner extends React.Component {
 	constructor(props) {
 		super(props);
-
-		// We declare the state as shown below
-
-		this.state = {
-			// x: "This is x from state",
-			// y: "This is y from state"
-		};
+		this.state = {};
 	}
 	render() {
 		return (

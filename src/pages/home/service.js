@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+const token = localStorage.getItem('@userToken');
 export const getListRecommend = (
 	endpoint,
 	body,
@@ -7,9 +7,10 @@ export const getListRecommend = (
 	typeAuthor = 'Token'
 ) => {
 	return axios({
-		url: `http://demo7080721.mockable.io/get-list-recommend-song`,
+		url: `http://localhost:8081/song?page=1&limit=10`,
 		method: method,
 		headers: {
+			Authorization: `Bearer ${token}`,
 			'content-type': 'application/json',
 			accept: 'application/json',
 		},
@@ -24,10 +25,12 @@ export const getListMix = (
 	method = 'GET',
 	typeAuthor = 'Token'
 ) => {
+	// console.log(token);
 	return axios({
-		url: `http://demo7080721.mockable.io/get-list-mix-song`,
+		url: `http://localhost:8081/song?page=1&limit=10`,
 		method: method,
 		headers: {
+			Authorization: `Bearer ${token}`,
 			'content-type': 'application/json',
 			accept: 'application/json',
 		},

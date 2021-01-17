@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card } from 'antd';
-import { Link } from 'react-router-dom';
 import {
 	EllipsisOutlined,
 	CaretRightOutlined,
@@ -18,15 +17,10 @@ class SongItem extends React.Component {
 		};
 	}
 
-	listLove = () => {
+	testLog = () => {
 		console.log(this.state.item);
-		console.log(localStorage.getItem('@PlayList'));
 	};
 	addItemSongToLocalStorage = () => {
-		var listPlay = localStorage.getItem('@PlayList');
-		listPlay = listPlay ? listPlay.split(',') : [];
-		listPlay.push(this.state.item.id);
-		localStorage.setItem('@PlayList', listPlay);
 		console.log(this.state.item.shareLinks);
 	};
 	render() {
@@ -41,21 +35,12 @@ class SongItem extends React.Component {
 						/>
 					}
 					actions={[
-						<HeartOutlined onClick={this.listLove} key="like" />,
+						<HeartOutlined onClick={this.testLog} key="like" />,
 						<CaretRightOutlined
 							key="play"
 							onClick={this.addItemSongToLocalStorage}
 						/>,
-						<Link
-							to={{
-								pathname: `/songdetail/${this.state.item.id}`,
-								aboutProps: {
-									item: this.state.item,
-								},
-							}}
-						>
-							<EllipsisOutlined key="ellipsis" />
-						</Link>,
+						<EllipsisOutlined key="ellipsis" />,
 					]}
 				>
 					<Meta

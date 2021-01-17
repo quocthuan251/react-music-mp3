@@ -12,29 +12,8 @@ class Recommend extends React.Component {
 	componentDidMount() {
 		this.props.getListRecomendSong();
 	}
-	// test1 = () => {
-	// 	const datatest = this.props.data.items;
-	// 	const resulttest = [];
-	// 	var x;
-	// 	for (x of datatest) {
-	// 		var obj = {
-	// 			id: x.id,
-	// 			title: x.title,
-	// 			download_permit: true,
-	// 			genre: 'nhạc trẻ',
-	// 			path: 'https://www.youtube.com/watch?v=bweXYSOMCkk',
-	// 			image: x.thumbnail_medium,
-	// 			album_id: x.raw_id,
-	// 			artist_id: x.created_at,
-	// 		};
-	// 		resulttest.push(obj);
-	// 	}
-	// 	console.log('haha');
-	// 	localStorage.setItem('myValueInLocalStorage', resulttest);
-	// 	console.log(resulttest);
-	// };
 	render() {
-		const list = this.props.data.item ?? [];
+		const list = this.props.data ?? [];
 		return (
 			<div>
 				<List
@@ -51,7 +30,7 @@ class Recommend extends React.Component {
 	}
 }
 const mapStateToProps = (state) => ({
-	data: state.reducerHome.data,
+	data: state.reducerHome.listRecommend,
 	loading: state.reducerHome.loading,
 	error: state.reducerHome.error,
 });

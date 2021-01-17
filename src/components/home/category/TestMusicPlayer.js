@@ -29,7 +29,7 @@ class TestMusicPlayer extends React.Component {
 					audioFiles={[
 						{
 							src:
-								'http://vnso-zn-15-tf-mp3-320s1-zmp3.zadn.vn/b388618ac9cd209379dc/1596613103323736812?authen=exp=1607597821~acl=/b388618ac9cd209379dc/*~hmac=3d5aae9d756d9eff086a3265a50d137d',
+								'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/Music_for_Video/Cullah/Cullahmity/Cullah_-_04_-_Lonely_Spider.mp3',
 							title: 'Rolling In The Deep',
 							artist: 'Adele',
 						},

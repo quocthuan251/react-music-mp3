@@ -25,6 +25,7 @@ function* getDataRecommend() {
 function* getDataListMix() {
 	try {
 		const { response, error } = yield call(Api.getListMix);
+		// console.log(response);
 		yield put({
 			type: GET_LIST_MIX_SUCCESS,
 			data: response.data,

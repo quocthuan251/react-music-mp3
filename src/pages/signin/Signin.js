@@ -8,7 +8,7 @@ import { getLogin } from './actions';
 import { Redirect, Route } from 'react-router';
 import Loading from './Loading';
 import './SigninStyle.css';
-
+import { message } from 'antd';
 const Signin = (props) => {
 	const onFinish = async (values) => {
 		console.log('Received values of form: ', values);
@@ -24,8 +24,12 @@ const Signin = (props) => {
 	}, []);
 	useEffect(() => {
 		const { authenticated } = props;
+		const { test } = props;
 		if (authenticated) {
 			props.router.history.push('/');
+		}
+		if (test == false) {
+			message.error('Sai tài khoản hoặc mật khẩu');
 		}
 		return () => {
 			//
@@ -111,6 +115,7 @@ const mapStateToProps = (state) => ({
 	loading: state.reducerLogin.loading,
 	error: state.reducerLogin.error,
 	authenticated: state.reducerLogin.authenticated,
+	test: state.reducerLogin.test,
 });
 const mapDispatchToProps = {
 	getLogin,

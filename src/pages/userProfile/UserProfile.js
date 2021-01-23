@@ -87,22 +87,22 @@ class UserProfile extends React.Component {
 							/>
 						</div>
 						<p className="user-profile-user-name">
-							Trần Quốc Thuận
+							{this.props.userProfile.userName}
 						</p>
 					</Col>
 					<Col span={18}>
 						<Descriptions>
 							<Descriptions.Item label="Tên người dùng">
-								Quốc Thuận
+								{this.props.userProfile.firstName}
 							</Descriptions.Item>
-							<Descriptions.Item label="Số ĐT">
-								03633000119
+							<Descriptions.Item label="email">
+								{this.props.userProfile.email}
 							</Descriptions.Item>
 							<Descriptions.Item label="Địa chỉ">
 								Q3, HCM
 							</Descriptions.Item>
 							<Descriptions.Item label="Giới tính">
-								Nam
+								{this.props.userProfile.gender}
 							</Descriptions.Item>
 							<Descriptions.Item label="Mô tả">
 								Hài hước, vui tính, thích đi du lịch và nghe
@@ -112,7 +112,7 @@ class UserProfile extends React.Component {
 					</Col>
 				</Row>
 				<Tabs defaultActiveKey="1" centered>
-					<TabPane
+					{/* <TabPane
 						tab="BÀI HÁT"
 						key="1"
 						className="user-profile-tab-pane-content"
@@ -129,11 +129,13 @@ class UserProfile extends React.Component {
 						<ImageDemo></ImageDemo>
 						<ImageDemo></ImageDemo>
 						<ImageDemo></ImageDemo>
+					</TabPane> */}
+					<TabPane tab="PLAYLIST" key="1">
+						<UserPlayList
+							listpPlayList={this.props.listSongLove}
+						></UserPlayList>
 					</TabPane>
-					<TabPane tab="PLAYLIST" key="2">
-						<UserPlayList></UserPlayList>
-					</TabPane>
-					<TabPane tab="YÊU THÍCH" key="3">
+					<TabPane tab="YÊU THÍCH" key="2">
 						<UserPlayList></UserPlayList>
 					</TabPane>
 				</Tabs>
@@ -143,6 +145,8 @@ class UserProfile extends React.Component {
 }
 const mapStateToProps = (state) => ({
 	data: state.reducerUser.data,
+	userProfile: state.reducerUser.userProfile,
+	listSongLove: state.reducerUser.listSongLove,
 	loading: state.reducerUser.loading,
 	error: state.reducerUser.error,
 });

@@ -6,7 +6,6 @@ const initialState = {
 	userToken: '',
 	error: '',
 	authenticated: false,
-	test: true,
 };
 
 const reducerLogin = (state = initialState, action) => {
@@ -16,7 +15,7 @@ const reducerLogin = (state = initialState, action) => {
 		}
 		case GET_LOGIN_SUCCESS: {
 			console.log('hello');
-			localStorage.setItem('@userToken', action.data);
+			localStorage.setItem('@userToken', action.data)
 			return {
 				...state,
 				data: action.data,
@@ -27,7 +26,7 @@ const reducerLogin = (state = initialState, action) => {
 		}
 		case GET_LOGIN_FAIL: {
 			console.log('hello fail');
-			return { ...state, test: false, error: action.error };
+			return { ...state, loading: false, error: action.error };
 		}
 		default:
 			return state;

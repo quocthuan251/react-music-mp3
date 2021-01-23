@@ -1,0 +1,61 @@
+* {
+	box-sizing: border-box;
+}
+
+.SongDetail2 {
+	min-height: 100vh;
+	padding: 50px 0;
+	background-color: #f6f6f6;
+	color: #101010;
+	text-align: center;
+}
+
+.Song-Thumbnail2 {
+	width: 150px;
+	height: 150px;
+	border-radius: 100%;
+	margin-top: 3rem;
+	object-fit: cover;
+}
+
+.Song-Title2 {
+	text-transform: capitalize;
+	margin-bottom: 0;
+	color: white;
+}
+
+.Singer2 {
+	margin-top: 0;
+	margin-bottom: 32px;
+	font-size: 12px;
+	color: white;
+}
+
+.Control-Button-Group2 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	margin-left: 80px;
+	/* > * {
+		cursor: pointer;
+	} */
+	color: white;
+}
+
+.Prev-Button2,
+.Next-Button2 {
+	width: 20px;
+}
+
+.Pause-Play-Button2 {
+	display: flex;
+	justify-content: center;
+	width: 14px;
+	/* height: 22px; */
+	margin: 0 32px;
+
+	/* svg {
+		height: 22px;
+	} */
+}

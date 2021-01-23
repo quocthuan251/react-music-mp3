@@ -6,6 +6,12 @@ import {
 	GET_LIST_MIX,
 	GET_LIST_MIX_SUCCESS,
 	GET_LIST_MIX_FAIL,
+	GET_PLAYSTREAM,
+	GET_PLAYSTREAM_SUCCESS,
+	GET_PLAYSTREAM_FAIL,
+	GET_RUN_PLAYSTREAM,
+	GET_RUN_PLAYSTREAM_SUCCESS,
+	GET_RUN_PLAYSTREAM_FAIL,
 } from './actions';
 import * as Api from './service';
 
@@ -35,10 +41,25 @@ function* getDataListMix() {
 		yield put({ type: GET_LIST_MIX_FAIL, error: error });
 	}
 }
+// stream
+function* getListPlayStream({ payload }) {
+	yield put({
+		type: GET_PLAYSTREAM_SUCCESS,
+		data: payload,
+	});
+}
+// run
+function* runPlayStream() {
+	yield put({
+		type: GET_RUN_PLAYSTREAM_SUCCESS,
+	});
+}
 // Config API to call once or many
 function* homeFlow() {
 	yield takeEvery(GET_LIST_RECOMMEND, getDataRecommend);
 	yield takeEvery(GET_LIST_MIX, getDataListMix);
+	yield takeEvery(GET_PLAYSTREAM, getListPlayStream);
+	yield takeEvery(GET_RUN_PLAYSTREAM, runPlayStream);
 }
 
 export default homeFlow;

@@ -24,15 +24,7 @@ class Content extends React.Component {
 					</Divider>
 					<RecommnendList></RecommnendList>
 				</div>
-				<div>
-					<Divider
-						orientation="left"
-						style={{ borderTopColor: 'white' }}
-					>
-						<p className="textTitle">Playlist nghe gần đây</p>
-					</Divider>
-					<MixList></MixList>
-				</div>
+
 				<div>
 					<Divider
 						orientation="left"
@@ -41,6 +33,15 @@ class Content extends React.Component {
 						<p className="textTitle">Mix Riêng cho bạn</p>
 					</Divider>
 					<MixList></MixList>
+				</div>
+				<div>
+					<Divider
+						orientation="left"
+						style={{ borderTopColor: 'white' }}
+					>
+						<p className="textTitle">Playlist nghe gần đây</p>
+					</Divider>
+					{/* <MixList></MixList> */}
 				</div>
 			</>
 		);

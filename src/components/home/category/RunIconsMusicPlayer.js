@@ -47,40 +47,19 @@ const iconStyle = { width: 'fit-content' },
 					type: 'play',
 					style: iconStyle,
 				},
-				// {
-				// 	type: 'rewind',
-				// 	style: iconStyle,
-				// },
-				// {
-				// 	type: 'forward',
-				// 	style: iconStyle,
-				// },
-				// {
-				// 	type: 'volume',
-				// },
+			
 			],
 		},
-		// {
-		// 	className: 'tier-bottom',
-		// 	innerComponents: [
-		// 		{
-		// 			type: 'time',
-		// 			style: iconStyle,
-		// 		},
-		// 		{
-		// 			type: 'seek',
-		// 		},
-		// 	],
-		// },
+		
 	];
-class TestMusicPlayer extends React.Component {
+class RunIconsMusicPlayer extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {};
 	}
 	render() {
 		return (
-			<div>
+			
 				<AudioPlayer
 					audioFiles={audioFiles}
 					rearrange={rearrangedPlayer}
@@ -89,8 +68,8 @@ class TestMusicPlayer extends React.Component {
 					fontSize="1rem"
 					sliderClass="invert-blue-grey"
 				/>
-			</div>
+	
 		);
 	}
 }
-export default TestMusicPlayer;
+export default RunIconsMusicPlayer;

@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { message } from 'antd';
 import {
 	Form,
 	Input,
@@ -18,40 +21,7 @@ import { QuestionCircleOutlined } from '@ant-design/icons';
 import { render } from '@testing-library/react';
 const { Option } = Select;
 const AutoCompleteOption = AutoComplete.Option;
-const residences = [
-	{
-		value: 'zhejiang',
-		label: 'Zhejiang',
-		children: [
-			{
-				value: 'hangzhou',
-				label: 'Hangzhou',
-				children: [
-					{
-						value: 'xihu',
-						label: 'West Lake',
-					},
-				],
-			},
-		],
-	},
-	{
-		value: 'jiangsu',
-		label: 'Jiangsu',
-		children: [
-			{
-				value: 'nanjing',
-				label: 'Nanjing',
-				children: [
-					{
-						value: 'zhonghuamen',
-						label: 'Zhong Hua Men',
-					},
-				],
-			},
-		],
-	},
-];
+
 const formItemLayout = {
 	labelCol: {
 		xs: {
@@ -88,6 +58,44 @@ const SignupPage = () => {
 
 	const onFinish = (values) => {
 		console.log('Received values of form: ', values);
+
+		const body = {
+			userName: values.userName,
+			password: values.password,
+
+			firstName: 'Thuan',
+			lastName: 'Tran',
+			email: values.email,
+
+			gender: 'nam',
+			birthDay: '1920-03-27',
+			activityStatus: 1,
+			userType: {
+				id: 1,
+			},
+		};
+		console.log('body');
+		console.log(body);
+		return axios({
+			url: `http://localhost:8081/signup`,
+			method: 'POST',
+			headers: {
+				'content-type': 'application/json',
+				accept: 'application/json',
+			},
+			data: body,
+		})
+			.then((response) =>
+				message.success({
+					content:
+						'Đăng ký thành công, hãy quay trở lại trang đăng nhập',
+					className: 'custom-class',
+					style: {
+						marginTop: '20vh',
+					},
+				})
+			)
+			.catch((error) => message.error('Thất bại! Tài khoản đã tồn tại'));
 	};
 
 	const prefixSelector = (
@@ -123,11 +131,11 @@ const SignupPage = () => {
 						rules={[
 							{
 								type: 'email',
-								message: 'The input is not valid E-mail!',
+								message: 'Nhập sai email!',
 							},
 							{
 								required: true,
-								message: 'Please input your E-mail!',
+								message: 'Hãy nhập email!',
 							},
 						]}
 					>
@@ -140,7 +148,7 @@ const SignupPage = () => {
 						rules={[
 							{
 								required: true,
-								message: 'Please input your password!',
+								message: 'hãy nhập password!',
 							},
 						]}
 						hasFeedback
@@ -156,7 +164,7 @@ const SignupPage = () => {
 						rules={[
 							{
 								required: true,
-								message: 'Please confirm your password!',
+								message: 'hãy nhập lại password!',
 							},
 							({ getFieldValue }) => ({
 								validator(rule, value) {
@@ -168,7 +176,7 @@ const SignupPage = () => {
 									}
 
 									return Promise.reject(
-										'The two passwords that you entered do not match!'
+										'Mật khẩu nhập lại không giống nhau!'
 									);
 								},
 							}),
@@ -178,11 +186,11 @@ const SignupPage = () => {
 					</Form.Item>
 
 					<Form.Item
-						name="nickname"
+						name="userName"
 						label={
 							<span>
-								Nickname&nbsp;
-								<Tooltip title="What do you want others to call you?">
+								Tên Đăng nhập&nbsp;
+								<Tooltip title="Tên tài khoản dùng để đăng nhập?">
 									<QuestionCircleOutlined />
 								</Tooltip>
 							</span>
@@ -190,7 +198,7 @@ const SignupPage = () => {
 						rules={[
 							{
 								required: true,
-								message: 'Please input your nickname!',
+								message: 'Hãy nhập tên đăng nhập!',
 								whitespace: true,
 							},
 						]}
@@ -199,54 +207,12 @@ const SignupPage = () => {
 					</Form.Item>
 
 					<Form.Item
-						name="residence"
-						label="Habitual Residence"
-						rules={[
-							{
-								type: 'array',
-								required: true,
-								message:
-									'Please select your habitual residence!',
-							},
-						]}
-					>
-						<Cascader options={residences} />
-					</Form.Item>
-
-					<Form.Item
-						name="phone"
-						label="Phone Number"
-						rules={[
-							{
-								required: true,
-								message: 'Please input your phone number!',
-							},
-						]}
-					>
-						<Input
-							addonBefore={prefixSelector}
-							style={{
-								width: '100%',
-							}}
-						/>
-					</Form.Item>
-					<Form.Item
 						label="Captcha"
-						extra="We must make sure that your are a human."
+						extra="Chúng tôi phải đảm bảo rằng bạn là một con người.."
 					>
 						<Row gutter={8}>
 							<Col span={12}>
-								<Form.Item
-									name="captcha"
-									noStyle
-									rules={[
-										{
-											required: true,
-											message:
-												'Please input the captcha you got!',
-										},
-									]}
-								>
+								<Form.Item name="captcha" noStyle>
 									<Input />
 								</Form.Item>
 							</Col>
@@ -265,22 +231,23 @@ const SignupPage = () => {
 									value
 										? Promise.resolve()
 										: Promise.reject(
-												'Should accept agreement'
+												'Hãy tích vào đồng ý điều khoản'
 										  ),
 							},
 						]}
 						{...tailFormItemLayout}
 					>
 						<Checkbox>
-							I have read the <a href="">agreement</a>
+							Tôi đã đọc và đồng ý <a href="">điều khoản</a>
 						</Checkbox>
 					</Form.Item>
 					<Form.Item {...tailFormItemLayout}>
 						<Button type="primary" htmlType="submit">
-							Register
+							Đăng ký
 						</Button>
 					</Form.Item>
 				</Form>
+				<Link to="/signin"> Trở lại trang đăng nhập</Link>
 			</Card>
 		</div>
 	);

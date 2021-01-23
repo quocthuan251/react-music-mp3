@@ -4,6 +4,8 @@ import { Button, Image, Tooltip } from 'antd';
 import { Row, Col, Statistic } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
 import { Tag } from 'antd';
+import { connect } from 'react-redux';
+import { deletePlayStream } from '../../pages/home/actions';
 // import reqwest from 'reqwest';
 import './style/PlayListContentBoxStyle.css';
 // import InfiniteScroll from 'react-infinite-scroller';
@@ -12,6 +14,7 @@ class PlayListContentBox extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			dataStream: [],
 			data: [
 				{
 					id: 1,
@@ -25,16 +28,21 @@ class PlayListContentBox extends React.Component {
 			hasMore: true,
 		};
 	}
+	componentDidMount() {
+		this.setState({
+			dataStream: this.props.listStream,
+		});
+	}
 	testclick = () => {
-		console.log('hello');
+		console.log(this.props.listStream);
 	};
 	deleteSong = (id) => {
 		console.log('delete sucess');
 		console.log(id);
-		let filteredArraySong = this.state.data.filter(
-			(item) => item.id !== id
-		);
-		this.setState({ data: filteredArraySong });
+		// let filteredArraySong = this.props.listStream.filter(
+		// 	(item) => item.id !== id
+		// );
+		// this.setState({ data: filteredArraySong });
 	};
 	render() {
 		const loader = <div className="loader">Loading ...</div>;
@@ -43,7 +51,7 @@ class PlayListContentBox extends React.Component {
 				<List
 					className="demo-loadmore-list"
 					itemLayout="horizontal"
-					dataSource={this.state.data}
+					dataSource={this.props.listStream}
 					renderItem={(item) => (
 						<List.Item key={item.id} style={{ color: 'white' }}>
 							<div
@@ -54,16 +62,16 @@ class PlayListContentBox extends React.Component {
 									<Col span={6}>
 										<Avatar
 											className="play-list-image-song"
-											src="https://i.scdn.co/image/ab67616d000048518bab2a8ce2c392fac6e14739"
+											src={item.image.imgLocation}
 										/>
 									</Col>
 									<Col span={18}>
 										<div className="play-list-miniDetailSongBox">
 											<div className="play-list-miniNameSong">
-												Stay Alive
+												{item.title}
 											</div>
 											<div className="play-list-miniAuthorSong">
-												Quốc Thuận
+												{item.album.name}
 											</div>
 										</div>
 									</Col>
@@ -84,4 +92,13 @@ class PlayListContentBox extends React.Component {
 		);
 	}
 }
-export default PlayListContentBox;
+const mapStateToProps = (state) => ({
+	listStream: state.reducerHome.listStream,
+	loading: state.reducerHome.loading,
+	error: state.reducerHome.error,
+});
+const mapDispatchToProps = {
+	deletePlayStream,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(PlayListContentBox);
+// export default PlayListContentBox;

@@ -1,5 +1,7 @@
 import './App.css';
 import React, { Suspense } from 'react';
+import { connect } from 'react-redux';
+
 import {
 	Switch,
 	Route,
@@ -31,14 +33,34 @@ const PrivateRoute = ({ isLogin, component: Component, ...rest }) => (
 		}
 	/>
 );
-function App() {
+function App(props) {
 	const showContent = () => {
+		const listPlayList = localStorage.getItem('@PlayList');
+		console.log('test');
+		console.log(listPlayList);
+		if (listPlayList === null) {
+			console.log('start set localStorage in App.js');
+			localStorage.setItem('@PlayList', []);
+		}
 		let result = [];
-		let isLogin = true;
+		// let isLogin = props.authenticated;
+		const token = props.userToken;
+		let isLogin = null;
+		if (token != '') {
+			isLogin = false;
+			console.log('thành công');
+			console.log(props.userToken);
+		}
+		if (token == '') {
+			isLogin = true;
+			console.log('thất bại 111');
+		}
+		// let isLogin = true;
 		if (routes.length > 0) {
 			result = routes.map((route, index) => {
 				const layout = route.layout;
 				if (route.auth && isLogin) {
+					console.log('soos lana');
 					return (
 						<PrivateRoute
 							key={index}
@@ -49,11 +71,14 @@ function App() {
 						/>
 					);
 				} else {
+					console.log('soos lana 222222');
+					// if(isLogin)
 					return (
 						<RouteWrapper
 							key={index}
 							path={route.path}
 							exact={route.exact}
+							isLogin={isLogin}
 							component={WaitingComponent(route.main)}
 							layout={layout}
 						/>
@@ -71,6 +96,7 @@ function App() {
 	);
 }
 function RouteWrapper({
+	isLogin,
 	component: Component,
 	layout: Layout,
 	exact: exact,
@@ -85,7 +111,30 @@ function RouteWrapper({
 					<Component {...props} />
 				</Layout>
 			)}
+			// {...rest}
+			// render={(props) =>
+			// 	isLogin == false ? (
+			// 		<Layout {...props}>
+			// 			<Component {...props} />
+			// 		</Layout>
+			// 	) : (
+			// 		<Layout {...props}>
+			// 			<Component {...props} />
+			// 		</Layout>
+			// 	)
+			// }
 		/>
 	);
 }
-export default App;
+// export default App;
+const mapStateToProps = (state) => ({
+	data: state.reducerLogin.data,
+	userToken: state.reducerLogin.userToken,
+	loading: state.reducerLogin.loading,
+	error: state.reducerLogin.error,
+	authenticated: state.reducerLogin.authenticated,
+});
+// const mapDispatchToProps = {
+// 	getLogin,
+// };
+export default connect(mapStateToProps, null)(App);

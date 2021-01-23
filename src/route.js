@@ -11,39 +11,40 @@ const SignupPage = lazy(() => import('./pages/signup/signup'));
 const Error404 = lazy(() => import('./common/errorPage/Error404'));
 const Test = lazy(() => import('./components/home/category/TestMusicPlayer'));
 const UserProfile = lazy(() => import('./pages/userProfile/UserProfile'));
+const LoadingPage = lazy(() => import('./pages/signin/Loading'));
 const route = [
 	{
 		path: '/',
 		exact: true,
-		auth: false,
+		auth: true,
 		layout: MainLayout,
 		main: (props) => <HomePage router={props} />,
 	},
 	{
 		path: '/top-new',
 		exact: true,
-		auth: false,
+		auth: true,
 		layout: MainLayout,
 		main: (props) => <MusicChart router={props} />,
 	},
 	{
 		path: '/new-release',
 		exact: true,
-		auth: false,
+		auth: true,
 		layout: MainLayout,
 		main: (props) => <NewPlayList router={props} />,
 	},
 	{
 		path: '/singer',
 		exact: true,
-		auth: false,
+		auth: true,
 		layout: MainLayout,
 		main: (props) => <SingerDeatil router={props} />,
 	},
 	{
 		path: `/singer/:id`,
 		exact: true,
-		auth: false,
+		auth: true,
 		layout: MainLayout,
 		main: (props) => <Artist router={props} />,
 	},
@@ -55,9 +56,9 @@ const route = [
 		main: (props) => <LoginPage router={props} />,
 	},
 	{
-		path: '/songdetail',
+		path: `/songdetail/:id`,
 		exact: true,
-		auth: false,
+		auth: true,
 		layout: MainLayout,
 		main: (props) => <SongDetailPage router={props} />,
 	},
@@ -69,6 +70,13 @@ const route = [
 		main: (props) => <SignupPage router={props} />,
 	},
 	{
+		path: '/redirect',
+		exact: true,
+		auth: true,
+		layout: LoginLayout,
+		main: (props) => <LoadingPage router={props} />,
+	},
+	{
 		path: '/filenotfoud',
 		exact: true,
 		auth: false,
@@ -78,7 +86,7 @@ const route = [
 	{
 		path: '/profile',
 		exact: true,
-		auth: false,
+		auth: true,
 		layout: MainLayout,
 		main: (props) => <UserProfile router={props} />,
 	},

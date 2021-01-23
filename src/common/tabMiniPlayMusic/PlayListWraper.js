@@ -4,6 +4,8 @@ import { Button, Drawer } from 'antd';
 import { MenuUnfoldOutlined } from '@ant-design/icons';
 import './style/PlayListWraperStyle.css';
 import PlayListContentBox from './PlayListContentBox';
+import { connect } from 'react-redux';
+
 class PlayListWraper extends React.Component {
 	constructor(props) {
 		super(props);
@@ -30,7 +32,7 @@ class PlayListWraper extends React.Component {
 					icon={<MenuUnfoldOutlined />}
 					style={{ backgroundColor: '#282828', color: 'gray' }}
 				>
-					Danh sách phát (56)
+					Danh sách phát ({this.props.listStream.length})
 				</Button>
 				<Drawer
 					title="Danh sách phát"
@@ -50,4 +52,13 @@ class PlayListWraper extends React.Component {
 		);
 	}
 }
-export default PlayListWraper;
+const mapStateToProps = (state) => ({
+	listStream: state.reducerHome.listStream,
+	loading: state.reducerHome.loading,
+	error: state.reducerHome.error,
+});
+// const mapDispatchToProps = {
+// 	deletePlayStream,
+// };
+export default connect(mapStateToProps, null)(PlayListWraper);
+// export default PlayListWraper;

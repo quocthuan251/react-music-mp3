@@ -8,6 +8,8 @@ const initialState = {
 	data: [],
 	loading: false,
 	error: '',
+	userProfile: {},
+	listSongLove: [],
 };
 
 const reducerUser = (state = initialState, action) => {
@@ -16,7 +18,16 @@ const reducerUser = (state = initialState, action) => {
 			return { ...state, loading: true, error: '' };
 		}
 		case GET_USER_DETAIL_SUCCESS: {
-			return { ...state, data: action.data, loading: false };
+			console.log('reduce');
+			console.log(action.data.userPlaylist);
+			console.log(action.data.song);
+			return {
+				...state,
+				data: action.data,
+				listSongLove: action.data.song,
+				userProfile: action.data.userPlaylist,
+				loading: false,
+			};
 		}
 		case GET_USER_DETAIL_FAIL: {
 			return { ...state, loading: false, error: action.error };

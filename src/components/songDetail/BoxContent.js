@@ -11,12 +11,14 @@ import {
 import './style/BoxContent.css';
 import TetImg from '../../images/vinile.png';
 import SonTung from '../../images/sontung.png';
-import audios from '../../audios';
+// import audios from '../../audios';
+import { connect } from 'react-redux';
+import { deletePlayStream } from '../../pages/home/actions';
 const iconStyle = {
 	fontSize: '26px',
 };
 
-const BoxContent = () => {
+const BoxContent = (props) => {
 	const audioRef = useRef();
 	const [audioIndex, setAudioIndex] = useState(0);
 	const [currentTime, setCurrentTime] = useState(0);
@@ -69,6 +71,26 @@ const BoxContent = () => {
 			title: 'Ant Design Title 5',
 			singer: 'Hương Tràm',
 		},
+		{
+			title: 'Ant Design Title 5',
+			singer: 'Hương Tràm',
+		},
+		{
+			title: 'Ant Design Title 5',
+			singer: 'Hương Tràm',
+		},
+		{
+			title: 'Ant Design Title 5',
+			singer: 'Hương Tràm',
+		},
+		{
+			title: 'Ant Design Title 5',
+			singer: 'Hương Tràm',
+		},
+		{
+			title: 'Ant Design Title 5',
+			singer: 'Hương Tràm',
+		},
 	];
 
 	return (
@@ -83,14 +105,24 @@ const BoxContent = () => {
 						borderRadius: '5px',
 					}}
 				>
-					<img className="Song-Thumbnail" src={TetImg} alt="tet" />
-					<h2 className="Song-Title">{audios[audioIndex].title}</h2>
-					<p className="Singer">{audios[audioIndex].artist}</p>
+					<img
+						className="Song-Thumbnail"
+						src={props.listStream[audioIndex].image.imgLocation}
+						alt="tet"
+					/>
+					<h2 className="Song-Title">
+						{props.listStream[audioIndex].title}
+					</h2>
+					<p className="Singer">
+						{props.listStream[audioIndex].album.name}
+					</p>
 					<div className="Control-Button-Group">
 						<div
 							className="Prev-Button"
 							onClick={() =>
-								setAudioIndex((audioIndex - 1) % audios.length)
+								setAudioIndex(
+									(audioIndex - 1) % props.listStream.length
+								)
 							}
 						>
 							<BackwardOutlined style={iconStyle} />
@@ -113,7 +145,9 @@ const BoxContent = () => {
 						<div
 							className="Next-Button"
 							onClick={() =>
-								setAudioIndex((audioIndex + 1) % audios.length)
+								setAudioIndex(
+									(audioIndex + 1) % props.listStream.length
+								)
 							}
 						>
 							<ForwardOutlined style={iconStyle} />
@@ -144,7 +178,8 @@ const BoxContent = () => {
 					/>
 					<audio
 						ref={audioRef}
-						src={audios[audioIndex].src}
+						// src={this.props.listStream[audioIndex].src}
+						src={`http://localhost:8081/downloadFile/${props.listStream[audioIndex].shareLinks}`}
 						onLoadedData={handleLoadedData}
 						onTimeUpdate={() =>
 							setCurrentTime(audioRef.current.currentTime)
@@ -157,7 +192,7 @@ const BoxContent = () => {
 						<h2> NGHE TIẾP</h2>
 						<List
 							itemLayout="horizontal"
-							dataSource={data}
+							dataSource={props.listStream}
 							renderItem={(item) => (
 								<List.Item>
 									<List.Item.Meta
@@ -170,14 +205,14 @@ const BoxContent = () => {
 												style={{
 													height: '100px',
 												}}
-												src={SonTung}
+												src={item.image.imgLocation}
 											/>
 										}
 										title={
-											<div>
+											<div style={{ padding: 30 }}>
 												<a href="#">{item.title}</a>
 												<br />
-												<span>{item.singer}</span>
+												<span>{item.album.name}</span>
 											</div>
 										}
 										// description="Ant Design, a design language for background applications, is refined by Ant UED Team"
@@ -191,5 +226,13 @@ const BoxContent = () => {
 		</div>
 	);
 };
-
-export default BoxContent;
+const mapStateToProps = (state) => ({
+	listStream: state.reducerHome.listStream,
+	loading: state.reducerHome.loading,
+	error: state.reducerHome.error,
+});
+const mapDispatchToProps = {
+	deletePlayStream,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(BoxContent);
+// export default BoxContent;

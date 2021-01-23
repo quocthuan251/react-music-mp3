@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Menu, Button, Popover, Dropdown } from 'antd';
 import { Link } from 'react-router-dom';
 import avatarDefault from '../../../images/vinile.png';
+import { connect } from 'react-redux';
+// import { logout } from '../../../pages/signin/actions';
 import './Style.css';
 import { message } from 'antd';
 import {
@@ -11,6 +13,9 @@ import {
 	DownOutlined,
 } from '@ant-design/icons';
 import Signin from '../../../pages/signin/Signin';
+function logout() {
+	window.location.reload();
+}
 
 function handleMenuClick(e) {
 	message.info('Click on menu item.');
@@ -33,7 +38,7 @@ const content = (
 		</Link>
 		<hr />
 		<Menu onClick={handleMenuClick}>
-			<Menu.Item key="1" icon={<UserOutlined />}>
+			{/* <Menu.Item key="1" icon={<UserOutlined />}>
 				1st menu item
 			</Menu.Item>
 			<Menu.Item key="2" icon={<UserOutlined />}>
@@ -41,14 +46,16 @@ const content = (
 			</Menu.Item>
 			<Menu.Item key="3" icon={<UserOutlined />}>
 				3rd menu item
-			</Menu.Item>
+			</Menu.Item> */}
 		</Menu>
 		<hr />
+
 		<Button
 			type="dashed"
 			shape="round"
 			icon={<LogoutOutlined />}
 			size={'middle'}
+			onClick={logout}
 		>
 			Đăng xuất
 		</Button>
@@ -99,5 +106,13 @@ export class AvatarGroup extends Component {
 		);
 	}
 }
-
-export default AvatarGroup;
+const mapStateToProps = (state) => ({
+	data: state.reducerLogin.data,
+	userToken: state.reducerLogin.userToken,
+	loading: state.reducerLogin.loading,
+	error: state.reducerLogin.error,
+	authenticated: state.reducerLogin.authenticated,
+});
+const mapDispatchToProps = {};
+export default connect(mapStateToProps, mapDispatchToProps)(AvatarGroup);
+// export default AvatarGroup;

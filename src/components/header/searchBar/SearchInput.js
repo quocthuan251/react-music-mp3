@@ -1,83 +1,64 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Input, AutoComplete } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
-import './SearchStyle.css';
 
-const renderTitle = (title) => {
+function getRandomInt(max, min = 0) {
+	return Math.floor(Math.random() * (max - min + 1)) + min; // eslint-disable-line no-mixed-operators
+}
+
+const searchResult = (query) => {
+	return new Array(getRandomInt(5))
+		.join('.')
+		.split('.')
+		.map((_, idx) => {
+			const category = `${query}`;
+			return {
+				value: category,
+				label: (
+					<div
+						style={{
+							display: 'flex',
+							justifyContent: 'space-between',
+						}}
+					>
+						<span>
+							Bài hát {query}
+							<a
+								href={`http://localhost:8081/songName?title=${query}`}
+								target="_blank"
+								rel="noopener noreferrer"
+							></a>
+						</span>
+						<span>{getRandomInt(200, 100)} kết quả</span>
+					</div>
+				),
+			};
+		});
+};
+
+const SearchInput = () => {
+	const [options, setOptions] = useState([]);
+
+	const handleSearch = (value) => {
+		setOptions(value ? searchResult(value) : []);
+	};
+
+	const onSelect = (value) => {
+		console.log('onSelect', value);
+	};
+
 	return (
-		<span>
-			{title}
-			<a
-				style={{
-					float: 'right',
-				}}
-				href="https://www.google.com/search?q=antd"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				more
-			</a>
-		</span>
+		<AutoComplete
+			dropdownMatchSelectWidth={252}
+			style={{
+				width: 300,
+			}}
+			options={options}
+			onSelect={onSelect}
+			onSearch={handleSearch}
+		>
+			<Input.Search size="large" placeholder="input here" enterButton />
+		</AutoComplete>
 	);
 };
-
-const renderItem = (title, count) => {
-	return {
-		value: title,
-		label: (
-			<div
-				style={{
-					display: 'flex',
-					justifyContent: 'space-between',
-				}}
-			>
-				{title}
-				<span>
-					<UserOutlined /> {count}
-				</span>
-			</div>
-		),
-	};
-};
-
-const options = [
-	{
-		label: renderTitle('Libraries'),
-		options: [
-			renderItem('AntDesign', 10000),
-			renderItem('AntDesign UI', 10600),
-		],
-	},
-	{
-		label: renderTitle('Solutions'),
-		options: [
-			renderItem('AntDesign UI FAQ', 60100),
-			renderItem('AntDesign FAQ', 30010),
-		],
-	},
-	{
-		label: renderTitle('Articles'),
-		options: [renderItem('AntDesign design language', 100000)],
-	},
-];
-
-const Complete = () => (
-	<AutoComplete
-		dropdownClassName="certain-category-search-dropdown"
-		dropdownMatchSelectWidth={500}
-		style={{
-			width: 'auto',
-		}}
-		options={options}
-	>
-		<Input.Search size="large" placeholder="input here" />
-	</AutoComplete>
-);
-
-export class SearchInput extends Component {
-	render() {
-		return <Complete />;
-	}
-}
 
 export default SearchInput;
